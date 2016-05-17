@@ -1,7 +1,10 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
+import PromosReducer from './reducer_promos'
+import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
-});
+  promos: PromosReducer,
+  form: formReducer
+})
 
-export default rootReducer;
+export default rootReducer
