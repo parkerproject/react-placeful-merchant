@@ -1,13 +1,137 @@
+/* global localStorage */
 import axios from 'axios'
+import { browserHistory } from 'react-router'
+import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_PROMOS, FETCH_MERCHANT_INFO } from './types'
 
-export const FETCH_PROMOS = 'FETCH_PROMOS'
+const ROOT_URL = 'http://localhost:5000'
 
-const ROOT_URL = 'http://api.placeful.co/merchant'
+export function loginUser ({email, password}) {
+  // returning func gives us access to dispatch
+  return function (dispatch) {
+    // submit email to server
+    axios.post(`${ROOT_URL}/login`, {email, password})
+      .then(response => {
+        // - Update state to indicate user is authenticated
+        dispatch({type: AUTH_USER})
+        // - Save the JWT token
+        localStorage.setItem('placeful_token', response.data.token)
+        // - redirect the route to /home
+        browserHistory.push('/home')
+      })
+      .catch(() => {
+        // if request is bad, show an error to user
+        dispatch(authError('Bad Login info'))
+      })
+  }
+}
+
+export function signupUser (formProps) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/register`, {formProps})
+      .then(response => {
+        dispatch({type: AUTH_USER})
+        browserHistory.push('/thanks')
+      })
+      .catch(response => dispatch(authError(response.data.error)))
+  }
+}
+
+export function logoutUser () {
+  localStorage.removeItem('placeful_token')
+  return { type: UNAUTH_USER }
+}
 
 export function fetchPromos () {
-  const request = axios.get(`${ROOT_URL}/promos`)
+  return function (dispatch) {
+    axios.get(`${ROOT_URL}/promos`, {
+      headers: { authorization: localStorage.getItem('placeful_token') }
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_PROMOS,
+          payload: response.data
+        })
+      })
+  }
+}
+
+export function fetchMerchantInfo () {
+  return function (dispatch) {
+    axios.get(`${ROOT_URL}/merchant`, {
+      headers: { authorization: localStorage.getItem('placeful_token') }
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_MERCHANT_INFO,
+          payload: response.data
+        })
+      })
+  }
+}
+
+export function editPromo (formProps) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/promo/edit`, formProps, {
+      headers: {authorization: localStorage.getItem('placeful_token')}
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_PROMOS,
+          payload: response.data
+        })
+        browserHistory.push('/promotions')
+      })
+  }
+}
+
+export function createPromo (formProps) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/promo/new`, formProps, {
+      headers: {authorization: localStorage.getItem('placeful_token')}
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_PROMOS,
+          payload: response.data
+        })
+        browserHistory.push('/promotions')
+      })
+  }
+}
+
+export function pausePromo (deal_id, merchant_id, status) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/promo/status`, {deal_id, merchant_id, status}, {
+      headers: {authorization: localStorage.getItem('placeful_token')}
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_PROMOS,
+          payload: response.data
+        })
+        browserHistory.push('/promotions')
+      })
+  }
+}
+
+export function editProfile (formProps) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/profile/edit`, formProps, {
+      headers: {authorization: localStorage.getItem('placeful_token')}
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_MERCHANT_INFO,
+          payload: response.data
+        })
+        browserHistory.push('/promotions')
+      })
+  }
+}
+
+export function authError (error) {
   return {
-    type: FETCH_PROMOS,
-    payload: request
+    type: AUTH_ERROR,
+    payload: error
   }
 }

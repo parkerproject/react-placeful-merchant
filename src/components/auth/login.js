@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { reduxForm } from 'redux-form'
+import * as actions from '../../actions'
 
 class Login extends Component {
   handleFormSubmit({email, password}) {
-    console.log(email, password)
+    this.props.loginUser({email, password})
   }
+
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+      <div className='alert alert-danger'>
+        <strong>Oops!</strong>
+        {this.props.errorMessage}
+      </div>
+      )
+    }
+  }
+
   render() {
     const { handleSubmit, fields: {email, password} } = this.props
     return (
@@ -22,11 +35,16 @@ class Login extends Component {
             <span className='glyphicon glyphicon-envelope form-control-feedback'></span>
           </div>
           <div className='form-group has-feedback'>
-            <input {...password} className='form-control' placeholder='Password' />
+            <input
+              {...password}
+              type='password'
+              className='form-control'
+              placeholder='Password' />
             <span className='glyphicon glyphicon-lock form-control-feedback'></span>
           </div>
           <div className='row'>
             <div className='col-xs-12'>
+              {this.renderAlert()}
               <button type='submit' className='btn btn-primary btn-block btn-flat red'>
                 Log In
               </button>
@@ -48,7 +66,12 @@ class Login extends Component {
   }
 }
 
+function mapStateToProps (state) {
+  return {errorMessage: state.auth.error}
+}
+
+// reduxForm works like maptoprops
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password']
-})(Login)
+}, mapStateToProps, actions)(Login)

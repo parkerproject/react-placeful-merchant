@@ -1,27 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
+// import Tablefilter from './partials/tablefilter'
+import Table from './partials/table'
+import { Link } from 'react-router'
 
-class Promos extends Component {
-  render() {
-    return (
-    <div className='box'>
-      <div className='box-header with-border'>
-        <h4>Create new promo</h4>
-        <button>
-          Add new promo
-        </button>
-      </div>
-      <div className='box-body overview'>
-        <div className='row'>
-          <div className='col-md-8'>
-            <p>
-              We give you complete creative freedom so you can maintain your brand identity with every promo.
-            </p>
+const Promos = (props) => {
+  return (
+  <div className='box'>
+    <div className='box-header'>
+      <Link to='/promo/new' className='btn btn-success'> Add new promo
+      </Link>
+    </div>
+    <div className='box-body overview'>
+      <div className='row'>
+        <div className='col-xs-12'>
+          <div className='box'>
+            <div className='box-body'>
+              <div id='example1_wrapper' className='dataTables_wrapper form-inline dt-bootstrap'>
+                <div className='row'>
+                  <div className='col-sm-12'>
+                    <Table data={props.promos} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    )
-  }
+  </div>
+  )
 }
 
 export default Promos

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
   <aside className='main-sidebar'>
     <section className='sidebar'>
@@ -15,11 +15,6 @@ const Sidebar = () => {
       </div>
       <ul className='sidebar-menu'>
         <li>
-          <Link to='/home'>
-          <i className='fa fa-home'></i> <span>Overview</span>
-          </Link>
-        </li>
-        <li>
           <Link to='/promo/new'>
           <i className='fa fa-edit'></i> <span>Create a new promotion</span>
           </Link>
@@ -27,21 +22,28 @@ const Sidebar = () => {
         <li>
           <Link to='/promotions'>
           <i className='fa fa-table'></i> <span>promotions</span>
+          <small className='label pull-right bg-red'>{props.length}</small>
+          </Link>
+        </li>
+        <li>
+          <Link to='/inbox'>
+          <i className='fa fa-envelope'></i> <span>Messages</span>
+          <small className='label pull-right bg-red'>12</small>
           </Link>
         </li>
         <li>
           <Link to='/analytics'>
-          <i className='fa fa-line-chart'></i> <span>Analytics</span> <i className='fa fa-lock pull-right'></i>
+          <i className='fa fa-line-chart'></i> <span>Analytics</span>
           </Link>
         </li>
         <li>
           <Link to='/quick_promo'>
-          <i className='fa fa-edit'></i> <span>Last minute promo</span> <i className='fa fa-lock pull-right'></i>
+          <i className='fa fa-edit'></i> <span>Last minute promo</span>
           </Link>
         </li>
         <li>
           <Link to='/create_ad'>
-          <i className='fa fa-users'></i> <span>Promote to followers</span> <i className='fa fa-lock pull-right'></i>
+          <i className='fa fa-users'></i> <span>Promote to followers</span>
           </Link>
         </li>
         <li>

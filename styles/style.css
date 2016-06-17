@@ -38,16 +38,6 @@ font-size: 14px;
 }
 
 
-.main-header .logo .logo-lg {
-     background: url('/images/Placeful-white-logo.png');
-     width: 183px;
-     text-indent: -9999px;
-     background-repeat: no-repeat;
-     position: relative;
-     top: 10px;
-     display: block;
-   }
-
    .login-logo a,
    .register-logo a {
      background: url('/images/Placeful-logo-black.png') no-repeat;
@@ -379,4 +369,146 @@ font-size: 14px;
 
 .text-center{
   text-align: center;
+}
+
+.alert-danger {
+  color: #a94442!important;
+  background-color: #f2dede!important;
+  border-color: #ebccd1;
+}
+
+.zip-state{
+  width: 48%;
+  margin-bottom: 15px;
+}
+
+.address{
+  width: 65%;
+  margin-bottom: 15px;
+}
+
+.state{
+  width: 30%;
+  margin-bottom: 15px;
+}
+
+.ion-ios-compose-outline, .ion-ios-pause, .ion-ios-play, .ion-ios-trash{
+  font-size: 20px;
+  cursor: pointer;
+  margin: 5px;
+  color: #bd382a
+}
+
+.changeImg{
+  padding: 10px;
+}
+
+/*****************************************
+  upload button styles
+******************************************/
+
+.file-upload__input {
+    display: block;
+    position: relative;
+    width: 200px;
+    cursor: pointer;
+    border: 0;
+    height: 60px;
+    border-radius: 5px;
+    outline: 0;
+}
+.file-upload__input:after {
+    transition: 200ms all ease;
+    border: 1px dashed rgba(0,0,0,.2);
+    background: #fff;
+    color: #000;
+    font-size: 13px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    content: 'Change promo image';
+    line-height: 60px;
+    border-radius: 5px;
+}
+
+.new-promo label{
+  font-weight: bold;
+}
+
+
+.image-upload{
+  width: 150px!important;
+  height: 150px!important;
+  border: 1px dashed #ccc;
+}
+
+.image-upload span{
+  font-size: 7em;
+  text-align: center;
+  display: block;
+}
+
+.new-promo .form-group{
+  margin-bottom: 30px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+  background-color: #00c0ef;
+  border-color: #00c0ef;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
+  color: white;
+}
+
+footer{
+  font-size: 11px
+}
+
+.common-questions p, .common-questions h3, .common-questions h4 {
+  padding: 0 0 0 20px;
+}
+
+.common-questions p{
+  padding-bottom: 20px;
+}
+
+.iCheck-custom{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  opacity: 0;
+  background: rgb(255, 255, 255);
+}
+
+.mailbox-subject a {
+  color: #2c3e50;
+  text-decoration: none!important
+}
+
+.checkbox{
+  font-size: 20px;
+}
+
+.photo-upload{
+  width: 80px!important;
+  height: 80px!important;
+  border: 1px dashed #ccc;
+  line-height: 80px;
+}
+
+.photo-upload span{
+  font-size: 0.8em;
+  cursor: pointer;
+  text-decoration: underline;
 }
