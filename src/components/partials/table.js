@@ -11,7 +11,6 @@ class Table extends Component {
   }
 
   pause (deal_id, merchant_id, status) {
-    // console.log(deal_id, merchant_id)
     this.props.pausePromo(deal_id, merchant_id, status)
   }
 

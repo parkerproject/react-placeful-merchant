@@ -118,14 +118,26 @@ export function editProfile (formProps) {
   return function (dispatch) {
     axios.post(`${ROOT_URL}/profile/edit`, formProps, {
       headers: {authorization: localStorage.getItem('placeful_token')}
-    })
-      .then(response => {
-        dispatch({
-          type: FETCH_MERCHANT_INFO,
-          payload: response.data
-        })
-        browserHistory.push('/promotions')
+    }).then(response => {
+      dispatch({
+        type: FETCH_MERCHANT_INFO,
+        payload: response.data
       })
+      browserHistory.push('/promotions')
+    })
+  }
+}
+
+export function readMessage (message_id) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/message/read`, {message_id}, {
+      headers: {authorization: localStorage.getItem('placeful_token')}
+    }).then(response => {
+      dispatch({
+        type: FETCH_MERCHANT_INFO,
+        payload: response.data
+      })
+    })
   }
 }
 

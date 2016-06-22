@@ -11,6 +11,7 @@ import Promos from './components/promos'
 import EditPromo from './components/edit_promo'
 import Inbox from './components/inbox'
 import Profile from './components/profile'
+import SingleMessage from './components/inbox_single'
 
 export default (
 <Route>
@@ -23,6 +24,7 @@ export default (
     <Route path='/promo/new' component={RequireAuth(PromoNew)} />
     <Route path='/promotions' component={RequireAuth(Promos)} />
     <Route path='/inbox' component={RequireAuth(Inbox)} />
+    <Route path='/message/:id' component={RequireAuth(SingleMessage)} />
     <Route path='/profile' component={RequireAuth(Profile)} />
     <Route path='/promotion/edit/:id' component={RequireAuth(EditPromo)} />
   </Route>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Header from './global/header'
 import Sidebar from './global/sidebar'
 import Footer from './global/footer'
@@ -6,6 +6,10 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 
 class App extends Component {
+  static propTypes = {
+    fetchMerchantInfo: PropTypes.func,
+    fetchPromos: PropTypes.func
+}
   componentWillMount () {
     this.props.fetchPromos()
     this.props.fetchMerchantInfo()

@@ -4,6 +4,5 @@ export default function (state = {}, action) {
     case FETCH_MERCHANT_INFO:
       return {...state, merchant: action.payload}
   }
-
   return state
 }

@@ -21,7 +21,7 @@ const Sidebar = (props) => {
         </li>
         <li>
           <Link to='/promotions'>
-          <i className='fa fa-table'></i> <span>promotions</span>
+          <i className='fa fa-table'></i> <span>Promotions</span>
           <small className='label pull-right bg-red'>{props.length}</small>
           </Link>
         </li>

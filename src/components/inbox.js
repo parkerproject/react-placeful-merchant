@@ -1,10 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Message from './partials/message'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 
 class Inbox extends Component {
   constructor (props) {
     super(props)
   }
+
+  static propTypes = {
+    data: PropTypes.string
+}
 
   render () {
     return (
@@ -14,15 +20,8 @@ class Inbox extends Component {
           <h3 className='box-title'>Inbox</h3>
         </div>
         <div className='box-body no-padding'>
-          <div className='mailbox-controls'>
-            <span className='ion-ios-trash'></span>
-          </div>
           <div className='table-responsive mailbox-messages'>
-            <table className='table table-hover table-striped'>
-              <tbody>
-                <Message />
-              </tbody>
-            </table>
+            <Message data={this.props.merchant} />
           </div>
         </div>
       </div>
@@ -31,4 +30,10 @@ class Inbox extends Component {
   }
 }
 
-export default Inbox
+function mapStateToProps (state) {
+  return {
+    authenticated: state.auth.authenticated
+  }
+}
+
+export default connect(mapStateToProps, actions)(Inbox)
