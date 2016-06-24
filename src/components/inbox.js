@@ -17,7 +17,7 @@ class Inbox extends Component {
     <div className='col-md-12'>
       <div className='box box-primary'>
         <div className='box-header with-border'>
-          <h3 className='box-title'>Inbox</h3>
+          <h3 className='box-title'>Messages</h3>
         </div>
         <div className='box-body no-padding'>
           <div className='table-responsive mailbox-messages'>

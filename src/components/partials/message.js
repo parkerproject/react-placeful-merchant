@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import Moment from 'moment'
 
 const Message = (props) => {
   if (!props.data) {
@@ -12,13 +13,8 @@ const Message = (props) => {
     let subjectClass = message.read ? 'font-weight-normal' : 'font-weight-bold'
     return (
     <tr key={key}>
-      <td>
-        <div>
-          <input type='checkbox' className='checkbox' />
-        </div>
-      </td>
       <td className='mailbox-subject'>
-        <Link to={`/message/${message.message_id}`} className={subjectClass}>
+        <Link to={`/message/${message.message_id}`} className={subjectClass} style={innerStyle.a}>
         {message.subject}
         </Link>
       </td>
@@ -35,6 +31,12 @@ const Message = (props) => {
     </tbody>
   </table>
   )
+}
+
+const innerStyle = {
+  a: {
+    borderBottom: 'none'
+  }
 }
 
 export default Message

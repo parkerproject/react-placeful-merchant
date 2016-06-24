@@ -16,7 +16,7 @@ class PostNewPromo extends Component {
     super(props)
     this.state = {tags: ['Food', 'Drinks', 'Beauty', 'Events', 'Fitness', 'Comedy', 'Culture', 'Party', 'Music', 'Fashion', 'Afterwork', 'Wellness', 'Trendy', 'Datenight', 'Club', 'Outdoors'],
       days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      categories: ['Food & Drinks', 'Health & Beauty', 'Events & Activities', 'Shopping'],
+      categories: ['Happy Hour', 'Dinner', 'Brunch'],
       cities: ['All New York',
         'Astoria',
         'Brooklyn',
@@ -91,20 +91,18 @@ class PostNewPromo extends Component {
     })
 
     return (
-    <div className='box new-promo'>
-      <div className='box-header with-border'>
-        <h4 className='lead'>New Promotion</h4>
-      </div>
+    <div className='box-typical box-typical-padding'>
+      <h4 className='m-t-lg with-border'>New Promotion</h4>
       <div className='box-body overview'>
         <div className='row'>
           <div className='col-md-8'>
             <form role='form' onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
               <div className='form-group'>
-                <label>
+                <label className='font-weight-bold'>
                   Promo (100-character limit)
                 </label>
                 <p>
-                  <small>Think of this as the tagline, the first thing locals will see when browsing through your promos e.g. Manic Monday Happy Hour - 2 for 1 drinks, 20% off all products, Wine and Dine Under the Stars - drink + food specials all night in our outdoor patio!</small>
+                  <span>Think of this as the tagline, the first thing locals will see when browsing through your promos e.g. Manic Monday Happy Hour - 2 for 1 drinks, 20% off all products, Wine and Dine Under the Stars - drink + food specials all night in our outdoor patio!</span>
                 </p>
                 <input
                   type='text'
@@ -116,29 +114,29 @@ class PostNewPromo extends Component {
                                                  </div>}
               </div>
               <div className='form-group'>
-                <label>
+                <label className='font-weight-bold'>
                   Description
                 </label>
                 <p>
-                  <small>Briefly, describe what the promo entails. We also encourage you to use this space to write a sentence or two about your place: What's your vibe? What are you known for? Why do your customers love you?</small>
+                  <span>Briefly, describe what the promo entails. We also encourage you to use this space to write a sentence or two about your place: What's your vibe? What are you known for? Why do your customers love you?</span>
                 </p>
                 <textarea className='form-control' {...description} placeholder='description' />
               </div>
               <div className='form-group'>
-                <label>
+                <label className='font-weight-bold'>
                   The Fine Print
                 </label>
                 <p>
-                  <small>Conditions that apply to this promo, e.g, only redeemable on weeknights</small>
+                  <span>Conditions that apply to this promo, e.g, only redeemable on weeknights</span>
                 </p>
                 <textarea className='form-control' {...fine_print} placeholder='fine print' />
               </div>
               <div className='form-group'>
-                <label>
+                <label className='font-weight-bold'>
                   Select which days of the week you want promo to run
                 </label>
                 <p>
-                  <small>Note that your promotion will only run on selected days</small>
+                  <span>Note that your promotion will only run on selected days</span>
                 </p>
                 <Select2
                   multiple
@@ -150,14 +148,14 @@ class PostNewPromo extends Component {
                                                  {days.error}
                                                </div>}
               </div>
-              <div className='form-group' style={styles}>
-                <label>
+              <div className='form-group' style={innerStyles.styles}>
+                <label className='font-weight-bold'>
                   Select the time range you want promo to run
                 </label>
                 <p>
-                  <small>Click the icons to pick the time</small>
+                  <span>Click the icons to pick the time</span>
                 </p>
-                <div className='col-md-6' style={padding}>
+                <div className='col-md-6' style={innerStyles.padding}>
                   <DateTimePicker
                     {...start_time}
                     name='start_time'
@@ -181,13 +179,13 @@ class PostNewPromo extends Component {
                                                          </div>}
                 </div>
               </div>
-              <div className='form-group' style={styles}>
-                <div className='col-md-6' style={padding}>
-                  <label>
+              <div className='form-group' style={innerStyles.styles}>
+                <div className='col-md-6' style={innerStyles.padding}>
+                  <label className='font-weight-bold'>
                     Start date
                   </label>
                   <p>
-                    <small>Click the icons to pick the start date</small>
+                    <span>Click the icons to pick the start date</span>
                   </p>
                   <DateTimePicker
                     {...start_date}
@@ -201,11 +199,11 @@ class PostNewPromo extends Component {
                                                              </div>}
                 </div>
                 <div className='col-md-6'>
-                  <label>
+                  <label className='font-weight-bold'>
                     End date
                   </label>
                   <p>
-                    <small>Click the icons to pick the end date</small>
+                    <span>Click the icons to pick the end date</span>
                   </p>
                   <DateTimePicker
                     {...end_date}
@@ -219,11 +217,11 @@ class PostNewPromo extends Component {
                 </div>
               </div>
               <div className='form-group'>
-                <label>
+                <label className='font-weight-bold'>
                   Targeting
                 </label>
                 <p>
-                  <small>Promote to people that are interested in...</small>
+                  <span>Promote to people that are interested in...</span>
                 </p>
                 <Select2
                   multiple
@@ -236,11 +234,11 @@ class PostNewPromo extends Component {
                                                </div>}
               </div>
               <div className='form-group'>
-                <label>
+                <label className='font-weight-bold'>
                   Select category for your promo
                 </label>
                 <p>
-                  <small>Choose the right category for your promo</small>
+                  <span>Choose the right category for your promo</span>
                 </p>
                 <Select2
                   multiple
@@ -253,11 +251,11 @@ class PostNewPromo extends Component {
                                                        </div>}
               </div>
               <div className='form-group'>
-                <label>
+                <label className='font-weight-bold'>
                   Select the neighborhood for this promo
                 </label>
                 <p>
-                  <small>What part of the city is this promotion taking place.</small>
+                  <span>What part of the city is this promotion taking place.</span>
                 </p>
                 <DropdownList
                   {...locality}
@@ -269,16 +267,16 @@ class PostNewPromo extends Component {
                                                        </div>}
               </div>
               <div className='form-group'>
-                <label>
+                <label className='font-weight-bold'>
                   Promo image
                 </label>
                 <p>
-                  <small>Promos with sharp and clear images tend to have more views. Make sure that image is at least 800px wide. <br /><span className='text-danger'>We do not accept images with text in the background</span></small>
+                  <span>Promos with sharp and clear images tend to have more views. Make sure that image is at least 800px wide. <br /><span className='text-danger'>We do not accept images with text in the background</span></span>
                 </p>
                 <div className='row'>
                   <div className='col-md-6'>
                     <Dropzone {...files} className='image-upload' onDrop={filesToUpload => this.handleImageChange(filesToUpload)}>
-                      <span className='ion-upload'></span>
+                      <span className='ion-upload' style={innerStyles.icon}></span>
                     </Dropzone>
                     {files.touched && files.error && <div className='error'>
                                                        {files.error}
@@ -301,13 +299,17 @@ class PostNewPromo extends Component {
   }
 }
 
-const styles = {
-  width: '100%',
-  float: 'left'
-}
-
-const padding = {
-  paddingLeft: '0'
+const innerStyles = {
+  styles: {
+    width: '100%',
+    float: 'left'
+  },
+  padding: {
+    paddingLeft: '0'
+  },
+  icon: {
+    fontSize: '2.5em'
+  }
 }
 
 function mapStateToProps (state) {
