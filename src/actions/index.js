@@ -201,6 +201,19 @@ export function resetPassword (email) {
   }
 }
 
+export function setPassword (formProps) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/merchant/setpassword`, formProps)
+      .then(response => {
+        dispatch({
+          type: FETCH_MERCHANT_INFO,
+          payload: response.data
+        })
+        browserHistory.push('/login')
+      })
+  }
+}
+
 export function authError (error) {
   return {
     type: AUTH_ERROR,

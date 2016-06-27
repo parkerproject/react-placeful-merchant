@@ -13,7 +13,7 @@ class Analytics extends Component {
         <h4 className='text-center p-t-lg'>You don't have enough data yet</h4>
         <p className='text-center p-x-lg'>
           Receive insight into the success of your marketing efforts on Placeful. View the number of impressions and views your business is getting within the app, as well
-          as actionable data for your promotions. Making it easy to gauge which promotions are resonating best with locals in your neighborhood.
+          as actionable data for your specials. Making it easy to gauge which specials are resonating best with locals in your neighborhood.
         </p>
       </section>
     </div>

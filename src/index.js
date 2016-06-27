@@ -1,4 +1,5 @@
-/* localStorage */
+/* Global localStorage */
+/* Global location */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -19,6 +20,11 @@ const token = localStorage.getItem('placeful_token') // if we have token, user i
 if (token) {
   // we need to update application state
   store.dispatch({type: AUTH_USER})
+}else {
+  let paths = ['/forgotpass', '/setpass', '/signup']
+  if (paths.indexOf(location.pathname) == -1) {
+    browserHistory.push('/login')
+  }
 }
 
 // createStoreWithMiddleware(reducers)
