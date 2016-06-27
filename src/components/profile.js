@@ -48,7 +48,7 @@ class Profile extends Component {
     }
     const {handleSubmit, fields: {business_name, business_phone, description, files }} = this.props
     return (
-    <div className='box'>
+    <div className='box-typical box-typical-padding'>
       <div className='box-header with-border'>
         <h4 className='lead'>Edit your profile</h4>
       </div>

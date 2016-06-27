@@ -4,12 +4,15 @@ import { reduxForm } from 'redux-form'
 import * as actions from '../../actions'
 
 class Signup extends Component {
-  handleFormSubmit(formProps) {
+  constructor (props) {
+    super(props)
+  }
+  handleFormSubmit (formProps) {
     // call action creator to sign up user
     this.props.signupUser(formProps)
   }
 
-  renderAlert() {
+  renderAlert () {
     if (this.props.errorMessage) {
       return (
       <div className='alert alert-danger'>
@@ -20,14 +23,14 @@ class Signup extends Component {
     }
   }
 
-  render() {
+  render () {
     const {handleSubmit, fields: {email, password, referral, phone, address, city, zipcode, state, name}} = this.props
     return (
     <div>
       <div className='container'>
         <div className='row'>
           <div className='col-md-12 text-center'>
-            <img src='/images/Placeful-logo-black.png' alt='' className='logo-img' />
+            <img src='/img/placeful-logo.png' alt='' />
           </div>
         </div>
       </div>
@@ -35,75 +38,71 @@ class Signup extends Component {
         <div className='row setup-content'>
           <div className='col-xs-6 col-md-offset-3'>
             <div className='col-md-12'>
-              <h3>Business Registration</h3>
+              <h3 className='text-center'>Business Registration</h3>
               <div className='form-group'>
                 <input
                   type='text'
                   className='form-control'
                   placeholder='business Name'
                   name='name'
-                  id='txtPlaces'
                   {...name} />
-                {name.touched && name.error && <div className='error'>
+                {name.touched && name.error && <div className='text-danger'>
                                                  {name.error}
                                                </div>}
               </div>
               <div className='form-group'>
-                <div className='pull-left address'>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Business address'
-                    name='address'
-                    {...address} />
-                  {address.touched && address.error && <div className='error'>
-                                                         {address.error}
-                                                       </div>}
-                </div>
-                <div className='pull-right state'>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='City'
-                    name='address'
-                    {...city} />
-                  {city.touched && city.error && <div className='error'>
-                                                   {city.error}
-                                                 </div>}
-                </div>
+                <input
+                  type='text'
+                  className='form-control'
+                  placeholder='business address'
+                  name='address'
+                  id='address-input'
+                  {...address} />
+                {address.touched && address.error && <div className='text-danger'>
+                                                       {address.error}
+                                                     </div>}
               </div>
               <div className='form-group'>
-                <div className='pull-left zip-state'>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Zipcode'
-                    name='city'
-                    {...zipcode} />
-                  {zipcode.touched && zipcode.error && <div className='error'>
-                                                         {zipcode.error}
-                                                       </div>}
-                </div>
-                <div className='pull-right zip-state'>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='State'
-                    name='state'
-                    {...state} />
-                  {state.touched && state.error && <div className='error'>
-                                                     {state.error}
-                                                   </div>}
-                </div>
+                <input
+                  type='text'
+                  className='form-control'
+                  placeholder='city'
+                  name='city'
+                  {...city} />
+                {city.touched && city.error && <div className='text-danger'>
+                                                 {city.error}
+                                               </div>}
+              </div>
+              <div className='form-group'>
+                <input
+                  type='text'
+                  className='form-control'
+                  placeholder='state'
+                  name='state'
+                  {...state} />
+                {state.touched && state.error && <div className='text-danger'>
+                                                   {state.error}
+                                                 </div>}
+              </div>
+              <div className='form-group'>
+                <input
+                  type='text'
+                  className='form-control'
+                  placeholder='zipcode'
+                  name='zipcode'
+                  {...zipcode} />
+                {zipcode.touched && zipcode.error && <div className='text-danger'>
+                                                       {zipcode.error}
+                                                     </div>}
               </div>
               <div className='form-group'>
                 <input
                   type='phone'
                   className='form-control'
-                  placeholder='Enter your business phone'
+                  placeholder='business phone'
                   name='phone'
                   {...phone} />
-                {phone.touched && phone.error && <div className='error'>
+                {phone.touched && phone.error && <div className='text-danger'>
                                                    {phone.error}
                                                  </div>}
               </div>
@@ -113,7 +112,7 @@ class Signup extends Component {
                   placeholder='Business Email'
                   name='email'
                   {...email} />
-                {email.touched && email.error && <div className='error'>
+                {email.touched && email.error && <div className='text-danger'>
                                                    {email.error}
                                                  </div>}
               </div>
@@ -124,7 +123,7 @@ class Signup extends Component {
                   placeholder='Password'
                   name='password'
                   {...password}/>
-                {password.touched && password.error && <div className='error'>
+                {password.touched && password.error && <div className='text-danger'>
                                                          {password.error}
                                                        </div>}
               </div>
@@ -132,7 +131,7 @@ class Signup extends Component {
                 <input
                   type='text'
                   className='form-control'
-                  placeholder='Give us a name'
+                  placeholder='how did you hear about us?'
                   name='referral'
                   {...referral} />
               </div>
@@ -169,8 +168,8 @@ function validate (formProps) {
   if (!formProps.address) errors.address = 'Please enter your business address'
   if (!formProps.phone) errors.phone = 'Please enter your phone number'
   if (!formProps.city) errors.city = 'Please enter your city'
+  if (formProps.zipcode === undefined) errors.zipcode = 'Please enter your zipcode'
   if (!formProps.state) errors.state = 'Please enter your state'
-  if (!formProps.zipcode) errors.zipcode = 'Please enter your zipcode'
   return errors
 }
 
@@ -180,6 +179,6 @@ function mapStateToProps (state) {
 
 export default reduxForm({
   form: 'signup',
-  fields: ['email', 'password', 'referral', 'phone', 'address', 'state', 'city', 'zipcode', 'name'],
+  fields: ['email', 'password', 'referral', 'phone', 'address', 'city', 'state', 'zipcode', 'name'],
   validate: validate
 }, mapStateToProps, actions)(Signup)

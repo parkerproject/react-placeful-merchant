@@ -24,11 +24,8 @@ class Table extends Component {
     let promos = this.props.data.map((promo) => {
       let end_date = Moment(promo.end_date).format('MMMM Do YYYY')
       let start_date = Moment(promo.start_date).format('MMMM Do YYYY')
-      let statusClass = promo.status === 'active' ? 'ion-ios-pause' : 'ion-ios-play'
-      let status = promo.status === ('active' || null) ? 'paused' : 'active'
-      let statusTip = promo.status === ('active' || null) ? 'pause promo' : 'activate promo'
-      let approved = promo.approved ? '' : 'label pull-right bg-yellow'
-      let approvedText = promo.approved ? '' : 'pending'
+      let approved = promo.approved ? 'label pull-right label-success' : 'label pull-right label-warning'
+      let approvedText = promo.approved ? 'published' : 'pending'
 
       return (
       <tr role='row' className='odd' key={promo._id}>
@@ -48,10 +45,8 @@ class Table extends Component {
           <a href={`http://placefulapp.com/promotion/${promo.deal_id}/${promo.slug}`} target='_blank'>View</a>
         </td>
         <td>
-          <Link to={`/promotion/edit/${promo.deal_id}`} title='edit promo'>
-          <span className='ion-ios-compose-outline'></span>
+          <Link to={`/promotion/edit/${promo.deal_id}`} title='edit promo'> Edit
           </Link>
-          <span className={statusClass} title={statusTip} onClick={this.pause.bind(this, promo.deal_id, promo.merchant_id, status)}></span>
           <span className={approved}>{approvedText}</span>
         </td>
       </tr>
@@ -72,6 +67,15 @@ class Table extends Component {
     )
   }
 
+}
+
+const innerStyle = {
+  status: {
+    position: 'relative',
+    left: '10px',
+    fontSize: '1.5em',
+    cursor: 'pointer'
+  }
 }
 
 function mapStateToProps (state) {

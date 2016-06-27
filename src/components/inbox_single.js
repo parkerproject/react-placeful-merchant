@@ -31,21 +31,25 @@ static propTypes = {
     let messageDate = Moment(message.timestamp).format('LL')
     return (
     <div className='col-md-9'>
-      <div className='box box-primary'>
+      <div className='box-typical box-typical-padding'>
         <div className='box-body no-padding'>
           <div className='mailbox-read-info'>
-            <h3>{message.subject}</h3>
-            <h5>From: <a href='mailto:concierge@placeful.co' className='text-light-blue'>concierge@placeful.co</a> <span className='mailbox-read-time pull-right'>{messageDate}</span></h5>
+            <h4 className='m-t-lg with-border m-b-0'>{message.subject}</h4>
+            <span>From: <a href='mailto:concierge@placeful.co'>concierge@placeful.co</a> <small className='pull-right'>{messageDate}</small></span>
           </div>
-          <div className='mailbox-read-message'>
-            <p>
+            <p className='p-t-md'>
               {message.body}
             </p>
-          </div>
         </div>
       </div>
     </div>
     )
+  }
+}
+
+const innerStyle = {
+  goBack: {
+    fontSize: '1.5em'
   }
 }
 

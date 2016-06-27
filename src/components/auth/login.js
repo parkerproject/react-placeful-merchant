@@ -4,11 +4,11 @@ import { reduxForm } from 'redux-form'
 import * as actions from '../../actions'
 
 class Login extends Component {
-  handleFormSubmit({email, password}) {
+  handleFormSubmit ({email, password}) {
     this.props.loginUser({email, password})
   }
 
-  renderAlert() {
+  renderAlert () {
     if (this.props.errorMessage) {
       return (
       <div className='alert alert-danger'>
@@ -19,48 +19,48 @@ class Login extends Component {
     }
   }
 
-  render() {
+  render () {
     const { handleSubmit, fields: {email, password} } = this.props
     return (
-    <div className='login-box'>
-      <div className='login-logo clearfix'>
-        <a></a>
-      </div>
-      <div className='login-box-body'>
-        <h4 className='login-box-msg'><p className='lead'> Login to Merchant Area </p></h4>
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          <span className='text-danger'></span>
-          <div className='form-group has-feedback'>
-            <input {...email} className='form-control' placeholder='Email' />
-            <span className='glyphicon glyphicon-envelope form-control-feedback'></span>
+    <div>
+      <h3 className="text-center"><img src='/img/placeful-logo.png' /></h3>
+      <form className='sign-box' onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        <div className='sign-avatar'>
+          <img src='/img/avatar-sign.png' />
+        </div>
+        <header className='sign-title'>
+          Sign In
+        </header>
+        <div className='form-group'>
+          <input
+            type='text'
+            {...email}
+            className='form-control'
+            placeholder='E-Mail' />
+        </div>
+        <div className='form-group'>
+          <input
+            type='password'
+            {...password}
+            className='form-control'
+            placeholder='Password' />
+        </div>
+        <div className='form-group'>
+          <div className='float-right reset'>
+            <Link to='/forgotpass'> Reset Password
+            </Link>
           </div>
-          <div className='form-group has-feedback'>
-            <input
-              {...password}
-              type='password'
-              className='form-control'
-              placeholder='Password' />
-            <span className='glyphicon glyphicon-lock form-control-feedback'></span>
-          </div>
-          <div className='row'>
-            <div className='col-xs-12'>
-              {this.renderAlert()}
-              <button type='submit' className='btn btn-primary btn-block btn-flat red'>
-                Log In
-              </button>
-            </div>
-          </div>
-        </form>
-        <br />
-        <p className='text-center'>
-          <Link to='/register' className='text-xs-center'> Register as a merchant
+        </div>
+        {this.renderAlert()}
+        <button type='submit' className='btn btn-rounded'>
+          Sign in
+        </button>
+        <p className='sign-note'>
+          New to our website?
+          <Link to='/signup'> Sign up
           </Link>
         </p>
-        <p className='text-center'>
-          <Link to='/forgotpass' className='text-xs-center'> I forgot my password
-          </Link>
-        </p>
-      </div>
+      </form>
     </div>
     )
   }

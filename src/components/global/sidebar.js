@@ -2,58 +2,60 @@ import React from 'react'
 import { Link } from 'react-router'
 
 const Sidebar = (props) => {
+  if (!props.merchant) {
+    return (
+    <div>
+      loading...
+    </div>
+    )
+  }
+  let messageCount = 0
+  const messages = props.merchant[0].messages.map((message, key) => {
+    if (!message.read) {
+      messageCount++
+    }
+    return messageCount
+  })
+  let active = messageCount > 0 ? 'active' : ''
   return (
-  <aside className='main-sidebar'>
-    <section className='sidebar'>
-      <div className='user-panel'>
-        <div className='pull-left'>
-          <p>
-            Demo
-          </p>
-          <i className='fa fa-circle text-success'></i> Online
-        </div>
-      </div>
-      <ul className='sidebar-menu'>
-        <li>
+  <div>
+    <div className='mobile-menu-left-overlay'></div>
+    <nav className='side-menu'>
+      <ul className='side-menu-list'>
+        <li className='green'>
           <Link to='/promo/new'>
-          <i className='fa fa-edit'></i> <span>Create a new promotion</span>
+          <i className='fa fa-edit'></i> <span className='lbl'>Create a new Special</span>
           </Link>
         </li>
-        <li>
+        <li className='magenta'>
           <Link to='/promotions'>
-          <i className='fa fa-table'></i> <span>Promotions</span>
-          <small className='label pull-right bg-red'>{props.length}</small>
+          <i className='fa fa-table'></i> <span className='lbl'>Specials</span>
           </Link>
         </li>
-        <li>
+        <li className='purple'>
           <Link to='/inbox'>
-          <i className='fa fa-envelope'></i> <span>Messages</span>
-          <small className='label pull-right bg-red'>12</small>
+          <span><i className={`font-icon font-icon-comments ${active}`}></i> <span className='lbl'>Messages</span></span>
           </Link>
         </li>
-        <li>
+        <li className='pink-red'>
           <Link to='/analytics'>
-          <i className='fa fa-line-chart'></i> <span>Analytics</span>
+          <i className='font-icon font-icon-zigzag'></i>
+          <span className='lbl'>Analytics</span>
           </Link>
         </li>
-        <li>
+        <li className='brown'>
           <Link to='/quick_promo'>
-          <i className='fa fa-edit'></i> <span>Last minute promo</span>
+          <i className='fa fa-edit'></i> <span className='lbl'>Last Minute Special</span>
           </Link>
         </li>
         <li>
-          <Link to='/create_ad'>
-          <i className='fa fa-users'></i> <span>Promote to followers</span>
-          </Link>
-        </li>
-        <li>
-          <Link to='/profile'>
-          <i className='fa fa-user'></i> <span>Profile</span>
+          <Link to='/followers/promote'>
+          <i className='fa fa-users'></i> <span className='lbl'>Promote to followers</span>
           </Link>
         </li>
       </ul>
-    </section>
-  </aside>
+    </nav>
+  </div>
   )
 }
 

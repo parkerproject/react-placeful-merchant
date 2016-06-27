@@ -1,7 +1,7 @@
 /* global localStorage */
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_PROMOS, FETCH_MERCHANT_INFO } from './types'
+import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_PROMOS, FETCH_MERCHANT_INFO, FETCH_FOLLOWERS_PROMOS } from './types'
 
 const ROOT_URL = 'http://localhost:5000'
 
@@ -16,7 +16,7 @@ export function loginUser ({email, password}) {
         // - Save the JWT token
         localStorage.setItem('placeful_token', response.data.token)
         // - redirect the route to /home
-        browserHistory.push('/home')
+        browserHistory.push('/')
       })
       .catch(() => {
         // if request is bad, show an error to user
@@ -38,7 +38,10 @@ export function signupUser (formProps) {
 
 export function logoutUser () {
   localStorage.removeItem('placeful_token')
-  return { type: UNAUTH_USER }
+  return function (dispatch) {
+    dispatch({ type: UNAUTH_USER })
+    browserHistory.push('/login')
+  }
 }
 
 export function fetchPromos () {
@@ -138,6 +141,63 @@ export function readMessage (message_id) {
         payload: response.data
       })
     })
+  }
+}
+
+export function promoteToFollowers (formProps) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/followers/promote`, formProps, {
+      headers: {authorization: localStorage.getItem('placeful_token')}
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_FOLLOWERS_PROMOS,
+          payload: response.data
+        })
+        browserHistory.push('/promotions')
+      })
+  }
+}
+
+export function fetchFollowersPromos () {
+  return function (dispatch) {
+    axios.get(`${ROOT_URL}/followers/promos`, {
+      headers: { authorization: localStorage.getItem('placeful_token') }
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_FOLLOWERS_PROMOS,
+          payload: response.data
+        })
+      })
+  }
+}
+
+export function lastMinutePromo (formProps) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/promos/lastminute`, formProps, {
+      headers: {authorization: localStorage.getItem('placeful_token')}
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_PROMOS,
+          payload: response.data
+        })
+        browserHistory.push('/promotions')
+      })
+  }
+}
+
+export function resetPassword (email) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/merchant/resetpassword`, email)
+      .then(response => {
+        dispatch({
+          type: FETCH_MERCHANT_INFO,
+          payload: response.data
+        })
+        browserHistory.push('/login')
+      })
   }
 }
 
