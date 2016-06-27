@@ -13,8 +13,11 @@ import Inbox from './components/inbox'
 import Profile from './components/profile'
 import SingleMessage from './components/inbox_single'
 import FollowersPromote from './components/followers_promote'
+<<<<<<< HEAD
 import LastMinutePromo from './components/promo_last_minute'
 import Analytics from './components/analytics'
+=======
+>>>>>>> 4fb0b0219fca3e8be532bce8e03c1f78b12ee276
 
 export default (
 <Route>
@@ -26,7 +29,10 @@ export default (
     <IndexRoute component={RequireAuth(Promos)} />
     <Route path='/promo/new' component={RequireAuth(PromoNew)} />
     <Route path='/promotions' component={RequireAuth(Promos)} />
+<<<<<<< HEAD
     <Route path='/quick_promo' component={RequireAuth(LastMinutePromo)} />
+=======
+>>>>>>> 4fb0b0219fca3e8be532bce8e03c1f78b12ee276
     <Route path='/followers/promote' component={RequireAuth(FollowersPromote)} />
     <Route path='/inbox' component={RequireAuth(Inbox)} />
     <Route path='/message/:id' component={RequireAuth(SingleMessage)} />
