@@ -21,9 +21,9 @@ if (token) {
   // we need to update application state
   store.dispatch({type: AUTH_USER})
 }else {
-  let paths = ['/forgotpass', '/setpass', '/signup']
+  let paths = ['/app/forgotpass', '/app/setpass', '/app/signup']
   if (paths.indexOf(location.pathname) == -1) {
-    browserHistory.push('/login')
+    browserHistory.push('/app/login')
   }
 }
 
