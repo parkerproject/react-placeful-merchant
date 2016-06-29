@@ -23,33 +23,33 @@ const Sidebar = (props) => {
     <nav className='side-menu'>
       <ul className='side-menu-list'>
         <li className='green'>
-          <Link to='/promo/new'>
+          <Link to='/app/promo/new'>
           <i className='fa fa-edit'></i> <span className='lbl'>Create a new Special</span>
           </Link>
         </li>
         <li className='magenta'>
-          <Link to='/promotions'>
+          <Link to='/app/promotions'>
           <i className='fa fa-table'></i> <span className='lbl'>Specials</span>
           </Link>
         </li>
         <li className='purple'>
-          <Link to='/inbox'>
+          <Link to='/app/inbox'>
           <span><i className={`font-icon font-icon-comments ${active}`}></i> <span className='lbl'>Messages</span></span>
           </Link>
         </li>
         <li className='pink-red'>
-          <Link to='/analytics'>
+          <Link to='/app/analytics'>
           <i className='font-icon font-icon-zigzag'></i>
           <span className='lbl'>Analytics</span>
           </Link>
         </li>
         <li className='brown'>
-          <Link to='/quick_promo'>
+          <Link to='/app/quick_promo'>
           <i className='fa fa-edit'></i> <span className='lbl'>Last Minute Special</span>
           </Link>
         </li>
         <li>
-          <Link to='/followers/promote'>
+          <Link to='/app/followers/promote'>
           <i className='fa fa-users'></i> <span className='lbl'>Promote to followers</span>
           </Link>
         </li>

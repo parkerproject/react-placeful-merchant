@@ -1,10 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
 import * as actions from '../../actions'
 
 class FollowersPromoteForm extends Component {
   constructor (props) {
     super(props)
+  }
+
+  static PropTypes = {
+    merchant: PropTypes.array,
+    fields: PropTypes.object,
+    promoteToFollowers: PropTypes.func
   }
 
   handleFormSubmit (formProps) {

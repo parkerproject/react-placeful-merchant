@@ -1,4 +1,4 @@
-import React, { Component, propTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Dropzone from 'react-dropzone'
 import { reduxForm } from 'redux-form'
 import * as actions from '../actions'
@@ -8,6 +8,12 @@ class EditPromo extends Component {
   constructor (props) {
     super(props)
     this.state = {file: '', display: 'show', preview: 'hide', buttonText: 'Submit'}
+  }
+
+  static PropTypes = {
+    promos: PropTypes.array,
+    fields: PropTypes.object,
+    editPromo: PropTypes.func
   }
 
   handleFormSubmit (formProps) {

@@ -9,7 +9,8 @@ class Inbox extends Component {
   }
 
   static propTypes = {
-    data: PropTypes.string
+    data: PropTypes.string,
+    merchant: PropTypes.array
 }
 
   render () {

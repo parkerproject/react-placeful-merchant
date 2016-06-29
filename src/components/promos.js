@@ -7,7 +7,7 @@ const Promos = (props) => {
   return (
   <div className='box'>
     <div className='box-header'>
-      <Link to='/promo/new' className='btn btn-success'> Add new Special
+      <Link to='/app/promo/new' className='btn btn-success'> Add new Special
       </Link>
     </div>
     <div className='box-body overview'>

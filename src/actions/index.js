@@ -16,7 +16,7 @@ export function loginUser ({email, password}) {
         // - Save the JWT token
         localStorage.setItem('placeful_token', response.data.token)
         // - redirect the route to /home
-        browserHistory.push('/')
+        browserHistory.push('/app')
       })
       .catch(() => {
         // if request is bad, show an error to user
@@ -30,7 +30,7 @@ export function signupUser (formProps) {
     axios.post(`${ROOT_URL}/register`, {formProps})
       .then(response => {
         dispatch({type: AUTH_USER})
-        browserHistory.push('/thanks')
+        browserHistory.push('/app/thanks')
       })
       .catch(response => dispatch(authError(response.data.error)))
   }
@@ -40,7 +40,7 @@ export function logoutUser () {
   localStorage.removeItem('placeful_token')
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER })
-    browserHistory.push('/login')
+    browserHistory.push('/app/login')
   }
 }
 
@@ -82,7 +82,7 @@ export function editPromo (formProps) {
           type: FETCH_PROMOS,
           payload: response.data
         })
-        browserHistory.push('/promotions')
+        browserHistory.push('/app/promotions')
       })
   }
 }
@@ -97,7 +97,7 @@ export function createPromo (formProps) {
           type: FETCH_PROMOS,
           payload: response.data
         })
-        browserHistory.push('/promotions')
+        browserHistory.push('/app/promotions')
       })
   }
 }
@@ -112,7 +112,7 @@ export function pausePromo (deal_id, merchant_id, status) {
           type: FETCH_PROMOS,
           payload: response.data
         })
-        browserHistory.push('/promotions')
+        browserHistory.push('/app/promotions')
       })
   }
 }
@@ -126,7 +126,7 @@ export function editProfile (formProps) {
         type: FETCH_MERCHANT_INFO,
         payload: response.data
       })
-      browserHistory.push('/promotions')
+      browserHistory.push('/app/promotions')
     })
   }
 }
@@ -154,7 +154,7 @@ export function promoteToFollowers (formProps) {
           type: FETCH_FOLLOWERS_PROMOS,
           payload: response.data
         })
-        browserHistory.push('/promotions')
+        browserHistory.push('/app/promotions')
       })
   }
 }
@@ -183,7 +183,7 @@ export function lastMinutePromo (formProps) {
           type: FETCH_PROMOS,
           payload: response.data
         })
-        browserHistory.push('/promotions')
+        browserHistory.push('/app/promotions')
       })
   }
 }
@@ -196,7 +196,7 @@ export function resetPassword (email) {
           type: FETCH_MERCHANT_INFO,
           payload: response.data
         })
-        browserHistory.push('/login')
+        browserHistory.push('/app/login')
       })
   }
 }
@@ -209,7 +209,7 @@ export function setPassword (formProps) {
           type: FETCH_MERCHANT_INFO,
           payload: response.data
         })
-        browserHistory.push('/login')
+        browserHistory.push('/app/login')
       })
   }
 }

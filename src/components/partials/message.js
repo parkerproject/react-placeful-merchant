@@ -14,7 +14,7 @@ const Message = (props) => {
     return (
     <tr key={key}>
       <td className='mailbox-subject'>
-        <Link to={`/message/${message.message_id}`} className={subjectClass} style={innerStyle.a}>
+        <Link to={`/app/message/${message.message_id}`} className={subjectClass} style={innerStyle.a}>
         {message.subject}
         </Link>
       </td>

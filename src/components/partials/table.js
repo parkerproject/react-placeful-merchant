@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Tablehead from './tablehead'
 import Moment from 'moment'
 import { Link } from 'react-router'
@@ -9,6 +9,12 @@ class Table extends Component {
   constructor (props) {
     super(props)
   }
+
+  static propTypes = {
+    data: PropTypes.array,
+    merchant: PropTypes.array,
+    pausePromo: PropTypes.func
+}
 
   pause (deal_id, merchant_id, status) {
     this.props.pausePromo(deal_id, merchant_id, status)
@@ -45,7 +51,7 @@ class Table extends Component {
           <a href={`http://placefulapp.com/promotion/${promo.deal_id}/${promo.slug}`} target='_blank'>View</a>
         </td>
         <td>
-          <Link to={`/promotion/edit/${promo.deal_id}`} title='edit promo'> Edit
+          <Link to={`/app/promotion/edit/${promo.deal_id}`} title='edit promo'> Edit
           </Link>
           <span className={approved}>{approvedText}</span>
         </td>

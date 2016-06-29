@@ -19,22 +19,22 @@ import SetPassword from './components/auth/set_password'
 
 export default (
 <Route>
-  <Route path='/login' component={Login} />
-  <Route path='/signup' component={Signup} />
-  <Route path='/logout' component={RequireAuth(Logout)} />
-  <Route path='/forgotpass' component={ForgotPass} />
-  <Route path='/setpass' component={SetPassword} />
-  <Route path='/' component={App}>
+  <Route path='/app/login' component={Login} />
+  <Route path='/app/signup' component={Signup} />
+  <Route path='/app/logout' component={RequireAuth(Logout)} />
+  <Route path='/app/forgotpass' component={ForgotPass} />
+  <Route path='/app/setpass' component={SetPassword} />
+  <Route path='/app' component={App}>
     <IndexRoute component={RequireAuth(Promos)} />
-    <Route path='/promo/new' component={RequireAuth(PromoNew)} />
-    <Route path='/promotions' component={RequireAuth(Promos)} />
-    <Route path='/quick_promo' component={RequireAuth(LastMinutePromo)} />
-    <Route path='/followers/promote' component={RequireAuth(FollowersPromote)} />
-    <Route path='/inbox' component={RequireAuth(Inbox)} />
-    <Route path='/message/:id' component={RequireAuth(SingleMessage)} />
-    <Route path='/analytics' component={RequireAuth(Analytics)} />
-    <Route path='/profile' component={RequireAuth(Profile)} />
-    <Route path='/promotion/edit/:id' component={RequireAuth(EditPromo)} />
+    <Route path='/app/promo/new' component={RequireAuth(PromoNew)} />
+    <Route path='/app/promotions' component={RequireAuth(Promos)} />
+    <Route path='/app/quick_promo' component={RequireAuth(LastMinutePromo)} />
+    <Route path='/app/followers/promote' component={RequireAuth(FollowersPromote)} />
+    <Route path='/app/inbox' component={RequireAuth(Inbox)} />
+    <Route path='/app/message/:id' component={RequireAuth(SingleMessage)} />
+    <Route path='/app/analytics' component={RequireAuth(Analytics)} />
+    <Route path='/app/profile' component={RequireAuth(Profile)} />
+    <Route path='/app/promotion/edit/:id' component={RequireAuth(EditPromo)} />
   </Route>
 </Route>
 

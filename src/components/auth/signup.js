@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import { reduxForm } from 'redux-form'
 import * as actions from '../../actions'
@@ -7,6 +7,13 @@ class Signup extends Component {
   constructor (props) {
     super(props)
   }
+
+  static propTypes = {
+    fields: PropTypes.object,
+    signupUser: PropTypes.func
+}
+
+
   handleFormSubmit (formProps) {
     // call action creator to sign up user
     this.props.signupUser(formProps)
@@ -144,7 +151,7 @@ class Signup extends Component {
         </div>
       </form>
       <p className='text-center' style={divStyle}>
-        <Link to='/login' className='text-xs-center'> Log in
+        <Link to='/app/login' className='text-xs-center'> Log in
         </Link>
       </p>
       <hr />
@@ -162,14 +169,14 @@ const divStyle = {
 
 function validate (formProps) {
   const errors = {}
-  if (!formProps.email) errors.email = 'Please enter your email'
-  if (!formProps.password) errors.password = 'Please enter your password'
-  if (!formProps.name) errors.name = 'Please enter your business name'
-  if (!formProps.address) errors.address = 'Please enter your business address'
-  if (!formProps.phone) errors.phone = 'Please enter your phone number'
-  if (!formProps.city) errors.city = 'Please enter your city'
+  if (formProps.email === undefined) errors.email = 'Please enter your email'
+  if (formProps.password === undefined) errors.password = 'Please enter your password'
+  if (formProps.name === undefined) errors.name = 'Please enter your business name'
+  if (formProps.address === undefined) errors.address = 'Please enter your business address'
+  if (formProps.phone === undefined) errors.phone = 'Please enter your phone number'
+  if (formProps.city === undefined) errors.city = 'Please enter your city'
   if (formProps.zipcode === undefined) errors.zipcode = 'Please enter your zipcode'
-  if (!formProps.state) errors.state = 'Please enter your state'
+  if (formProps.state === undefined) errors.state = 'Please enter your state'
   return errors
 }
 

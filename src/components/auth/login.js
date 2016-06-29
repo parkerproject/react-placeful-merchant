@@ -47,7 +47,7 @@ class Login extends Component {
         </div>
         <div className='form-group'>
           <div className='float-right reset'>
-            <Link to='/forgotpass'> Reset Password
+            <Link to='/app/forgotpass'> Reset Password
             </Link>
           </div>
         </div>
@@ -56,8 +56,7 @@ class Login extends Component {
           Sign in
         </button>
         <p className='sign-note'>
-          New to our website?
-          <Link to='/signup'> Sign up
+          <Link to='/app/signup'> Sign up
           </Link>
         </p>
       </form>

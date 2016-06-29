@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Dropzone from 'react-dropzone'
 import Select2 from 'react-select2-wrapper'
 import { reduxForm } from 'redux-form'
@@ -11,6 +11,11 @@ import { DropdownList } from 'react-widgets'
 momentLocalizer(Moment)
 
 class PostNewPromo extends Component {
+
+  static PropTypes = {
+    fields: PropTypes.object,
+    createPromo: PropTypes.func
+  }
 
   constructor (props) {
     super(props)
@@ -322,7 +327,7 @@ function mapStateToProps (state) {
 function validate (formProps) {
   const errors = {}
   for (var key of Object.keys(formProps)) {
-    if (formProps[key] == undefined && key != 'description' && key != 'fine_print') {
+    if (formProps[key] === undefined && key !== 'description' && key !== 'fine_print') {
       errors[key] = 'Field is required'
     }
   }

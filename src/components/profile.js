@@ -5,7 +5,8 @@ import Dropzone from 'react-dropzone'
 
 class Profile extends Component {
   static PropTypes = {
-    merchant: PropTypes.string
+    merchant: PropTypes.array,
+    fields: PropTypes.object
   }
 
   constructor(props){

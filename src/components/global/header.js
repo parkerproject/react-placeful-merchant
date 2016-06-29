@@ -23,11 +23,11 @@ const Header = () => {
                 <img src='/img/avatar-2-64.png' alt='' />
               </button>
               <div className='dropdown-menu dropdown-menu-right' aria-labelledby='dd-user-menu'>
-                <Link className='dropdown-item' to='/profile'>
+                <Link className='dropdown-item' to='/app/profile'>
                 <span className='font-icon glyphicon glyphicon-user'></span>Profile
                 </Link>
                 <div className='dropdown-divider'></div>
-                <Link className='dropdown-item' to='/logout'>
+                <Link className='dropdown-item' to='/app/logout'>
                 <span className='font-icon glyphicon glyphicon-log-out'></span>Logout
                 </Link>
               </div>
