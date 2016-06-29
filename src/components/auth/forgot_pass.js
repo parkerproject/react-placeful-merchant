@@ -32,7 +32,7 @@ class ResetPassword extends Component {
           Submit
         </button>
         <p className='sign-note'>
-          <Link to='/signup'> Sign up
+          <Link to='/app/signup'> Sign up
           </Link>
         </p>
       </form>
