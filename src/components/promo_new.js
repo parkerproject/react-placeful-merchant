@@ -21,7 +21,7 @@ class PostNewPromo extends Component {
     super(props)
     this.state = {tags: ['Food', 'Drinks', 'Events', 'Comedy', 'Culture', 'Party', 'Music', 'Afterwork', 'Trendy', 'Datenight', 'Club', 'Outdoors'],
       days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      categories: ['Happy Hour', 'Dinner', 'Brunch'],
+      categories: ['Happy Hour', 'Lunch', 'Dinner', 'Brunch'],
       cities: ['All New York',
         'Astoria',
         'Brooklyn',
