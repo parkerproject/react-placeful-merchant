@@ -3,7 +3,7 @@ import axios from 'axios'
 import { browserHistory } from 'react-router'
 import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_PROMOS, FETCH_MERCHANT_INFO, FETCH_FOLLOWERS_PROMOS } from './types'
 
-const ROOT_URL = 'http://localhost:5000'
+const ROOT_URL = 'https://data.placeful.co' // api-placeful-merchant repo
 
 export function loginUser ({email, password}) {
   // returning func gives us access to dispatch
