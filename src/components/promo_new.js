@@ -115,7 +115,7 @@ class PostNewPromo extends Component {
                   maxLength='50'
                   {...title}
                   placeholder='title' />
-                {title.touched && title.error && <div className='error'>
+                {title.touched && title.error && <div className='text-danger'>
                                                    {title.error}
                                                  </div>}
               </div>
@@ -150,7 +150,7 @@ class PostNewPromo extends Component {
                   data={this.state.days}
                   options={{placeholder: 'select the days'}}
                   className='form-control' />
-                {days.touched && days.error && <div className='error'>
+                {days.touched && days.error && <div className='text-danger'>
                                                  {days.error}
                                                </div>}
               </div>
@@ -169,7 +169,7 @@ class PostNewPromo extends Component {
                     calendar={false}
                     onChange={timechange.bind(null, 0)}
                     value={this.state.timevalue0} />
-                  {start_time.touched && start_time.error && <div className='error'>
+                  {start_time.touched && start_time.error && <div className='text-danger'>
                                                                {start_time.error}
                                                              </div>}
                 </div>
@@ -180,7 +180,7 @@ class PostNewPromo extends Component {
                     placeholder='end time'
                     calendar={false}
                     onChange={timechange.bind(null, 1)} />
-                  {end_time.touched && end_time.error && <div className='error'>
+                  {end_time.touched && end_time.error && <div className='text-danger'>
                                                            {end_time.error}
                                                          </div>}
                 </div>
@@ -200,7 +200,7 @@ class PostNewPromo extends Component {
                     time={false}
                     onChange={change.bind(null, 0)}
                     value={this.state.value0} />
-                  {start_date.touched && start_date.error && <div className='error'>
+                  {start_date.touched && start_date.error && <div className='text-danger'>
                                                                {start_date.error}
                                                              </div>}
                 </div>
@@ -217,7 +217,7 @@ class PostNewPromo extends Component {
                     value={this.state.value1}
                     time={false}
                     onChange={change.bind(null, 1)} />
-                  {end_date.touched && end_date.error && <div className='error'>
+                  {end_date.touched && end_date.error && <div className='text-danger'>
                                                            {end_date.error}
                                                          </div>}
                 </div>
@@ -235,7 +235,7 @@ class PostNewPromo extends Component {
                   data={this.state.tags}
                   options={{placeholder: 'select tags'}}
                   className='form-control' />
-                {tags.touched && tags.error && <div className='error'>
+                {tags.touched && tags.error && <div className='text-danger'>
                                                  {tags.error}
                                                </div>}
               </div>
@@ -252,7 +252,7 @@ class PostNewPromo extends Component {
                   data={this.state.categories}
                   options={{placeholder: 'select category'}}
                   className='form-control' />
-                {category.touched && category.error && <div className='error'>
+                {category.touched && category.error && <div className='text-danger'>
                                                          {category.error}
                                                        </div>}
               </div>
@@ -268,7 +268,7 @@ class PostNewPromo extends Component {
                   data={this.state.cities}
                   defaultValue={''}
                   placeholder='select neighborhood' />
-                {locality.touched && locality.error && <div className='error'>
+                {locality.touched && locality.error && <div className='text-danger'>
                                                          {locality.error}
                                                        </div>}
               </div>
@@ -284,7 +284,7 @@ class PostNewPromo extends Component {
                     <Dropzone {...files} className='image-upload' onDrop={filesToUpload => this.handleImageChange(filesToUpload)}>
                       <span className='ion-upload' style={innerStyles.icon}></span>
                     </Dropzone>
-                    {files.touched && files.error && <div className='error'>
+                    {files.touched && files.error && <div className='text-danger'>
                                                        {files.error}
                                                      </div>}
                   </div>
