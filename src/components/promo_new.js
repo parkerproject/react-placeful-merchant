@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes, Modal } from 'react'
 import Dropzone from 'react-dropzone'
 import Select2 from 'react-select2-wrapper'
 import { reduxForm } from 'redux-form'
@@ -7,6 +7,7 @@ import Moment from 'moment'
 import momentLocalizer from 'react-widgets/lib/localizers/moment'
 import { DateTimePicker } from 'react-widgets'
 import { DropdownList } from 'react-widgets'
+import { browserHistory } from 'react-router'
 
 momentLocalizer(Moment)
 
@@ -14,7 +15,8 @@ class PostNewPromo extends Component {
 
   static PropTypes = {
     fields: PropTypes.object,
-    createPromo: PropTypes.func
+    createPromo: PropTypes.func,
+    merchant: PropTypes.array
   }
 
   constructor (props) {
@@ -55,6 +57,15 @@ class PostNewPromo extends Component {
       value0: null, value1: null, file: '', preview: 'hide', timevalue0: null, timevalue1: null
 
     }
+  }
+
+  checkIfExpired (date) {
+    // let todayDate = new Moment().format('M/D/YYYY')
+    // todayDate = new Moment(todayDate, 'M/D/YYYY')
+    // let joinedDate = new Moment(date, 'M/D/YYYY')
+    // let diffDays = todayDate.diff(joinedDate, 'days')
+    //
+    // if (diffDays > 14) {}
   }
 
   handleFormSubmit (formProps) {

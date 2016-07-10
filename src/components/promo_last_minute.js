@@ -1,11 +1,18 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes, Modal } from 'react'
 import { reduxForm } from 'redux-form'
 import * as actions from '../actions'
 import Select2 from 'react-select2-wrapper'
 import Dropzone from 'react-dropzone'
 import { DropdownList } from 'react-widgets'
+import Moment from 'moment'
+import { browserHistory } from 'react-router'
 
 class LastMinutePromo extends Component {
+  static propTypes = {
+    merchant: PropTypes.array,
+    lastMinutePromo: PropTypes.func
+}
+
   constructor (props) {
     super(props)
     this.state = {
@@ -44,10 +51,17 @@ class LastMinutePromo extends Component {
     }
   }
 
-  static propTypes = {
-    merchant: PropTypes.array,
-    lastMinutePromo: PropTypes.func
+componentWillUpdate () {
+  // let date = this.props.merchant[0].joined_date
+  // let todayDate = new Moment().format('M/D/YYYY')
+  // todayDate = new Moment(todayDate, 'M/D/YYYY')
+  // let joinedDate = new Moment(date, 'M/D/YYYY')
+  // let diffDays = todayDate.diff(joinedDate, 'days')
+  //
+  // if (diffDays > 14) {
+  // }
 }
+
 
   handleFormSubmit (formProps) {
     let body = new FormData()

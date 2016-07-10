@@ -1,7 +1,7 @@
 /* global localStorage */
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_PROMOS, FETCH_MERCHANT_INFO, FETCH_FOLLOWERS_PROMOS } from './types'
+import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_PROMOS, FETCH_MERCHANT_INFO, FETCH_FOLLOWERS_PROMOS, TRIAL_EXPIRED } from './types'
 
 const ROOT_URL = 'https://data.placeful.co' // api-placeful-merchant repo
 

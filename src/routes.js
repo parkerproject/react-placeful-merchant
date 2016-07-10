@@ -16,6 +16,7 @@ import FollowersPromote from './components/followers_promote'
 import LastMinutePromo from './components/promo_last_minute'
 import Analytics from './components/analytics'
 import SetPassword from './components/auth/set_password'
+import StripeView from './components/stripe'
 
 export default (
 <Route>
@@ -31,6 +32,7 @@ export default (
     <Route path='/app/quick_promo' component={RequireAuth(LastMinutePromo)} />
     <Route path='/app/followers/promote' component={RequireAuth(FollowersPromote)} />
     <Route path='/app/inbox' component={RequireAuth(Inbox)} />
+    <Route path='/app/payment' component={RequireAuth(StripeView)} />
     <Route path='/app/message/:id' component={RequireAuth(SingleMessage)} />
     <Route path='/app/analytics' component={RequireAuth(Analytics)} />
     <Route path='/app/profile' component={RequireAuth(Profile)} />
