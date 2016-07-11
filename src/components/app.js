@@ -4,6 +4,7 @@ import Sidebar from './global/sidebar'
 import Footer from './global/footer'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
+import Intercom from 'react-intercom'
 
 class App extends Component {
   static propTypes = {
@@ -18,6 +19,13 @@ class App extends Component {
   }
 
   render () {
+    if(!this.props.merchant){
+      return <div>Loading</div>
+    }
+    const user = {
+      email: this.props.merchant[0].business_email,
+      name: this.props.merchant[0].business_name
+    }
     return (
     <div>
       <Header />
@@ -27,6 +35,7 @@ class App extends Component {
       			{React.cloneElement(this.props.children, this.props)}
       		</div>
       	</div>
+        <Intercom appID='s3kazult' { ...user } />
     </div>
     )
   }
