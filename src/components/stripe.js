@@ -29,7 +29,7 @@ class PaymentView extends Component {
       <section className='box-typical box-typical-full-height'>
         <div className='box-typical-center'>
           <div className='box-typical-center-in prices-page'>
-          <p>Your 14 days free trial has ended. Make payment below to continue</p>
+          <p>Your 14 days free trial has ended. Make payment below to continue.</p>
             <header className='prices-page-title'>
               Affordable price. No contract.
             </header>
@@ -47,7 +47,7 @@ class PaymentView extends Component {
                 <div className='clear'></div>
                 <StripeCheckout
                   token={this.onToken}
-                  stripeKey='pk_test_38o72mxE5rPuPUpZTDJVmKKv'
+                  stripeKey='pk_live_9xZBCqxsOvcil3BXQjT5lpPl'
                   name={this.props.merchant[0].business_name}
                   image='https://dl.dropbox.com/s/dk44jwvhaoxkxl2/Icon-76%402x.png?dl=0'
                   componentclassName='div'

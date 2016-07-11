@@ -16,6 +16,9 @@ export function loginUser ({email, password}) {
         // - Save the JWT token
         localStorage.setItem('placeful_token', response.data.token)
         localStorage.setItem('placeful_joined', response.data.joined_date)
+        localStorage.setItem('placeful_active', true)
+        localStorage.setItem('placeful_user', response.data.business_email)
+        localStorage.setItem('placeful_username', response.data.business_name)
         // - redirect the route to /home
         browserHistory.push('/app')
       })
@@ -55,6 +58,9 @@ export function signupUser (formProps) {
 
 export function logoutUser () {
   localStorage.removeItem('placeful_token')
+  localStorage.removeItem('placeful_active')
+  localStorage.removeItem('placeful_user')
+  localStorage.removeItem('placeful_username')
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER })
     browserHistory.push('/app/login')
