@@ -51,18 +51,6 @@ class LastMinutePromo extends Component {
     }
   }
 
-componentWillUpdate () {
-  // let date = this.props.merchant[0].joined_date
-  // let todayDate = new Moment().format('M/D/YYYY')
-  // todayDate = new Moment(todayDate, 'M/D/YYYY')
-  // let joinedDate = new Moment(date, 'M/D/YYYY')
-  // let diffDays = todayDate.diff(joinedDate, 'days')
-  //
-  // if (diffDays > 14) {
-  // }
-}
-
-
   handleFormSubmit (formProps) {
     let body = new FormData()
     Object.keys(formProps).forEach((key) => {

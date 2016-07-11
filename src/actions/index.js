@@ -1,7 +1,7 @@
 /* global localStorage */
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_PROMOS, FETCH_MERCHANT_INFO, FETCH_FOLLOWERS_PROMOS, TRIAL_EXPIRED } from './types'
+import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_PROMOS, FETCH_MERCHANT_INFO, FETCH_FOLLOWERS_PROMOS, SUBSCRIBER_USER } from './types'
 
 const ROOT_URL = 'https://data.placeful.co' // api-placeful-merchant repo
 
@@ -15,6 +15,7 @@ export function loginUser ({email, password}) {
         dispatch({type: AUTH_USER})
         // - Save the JWT token
         localStorage.setItem('placeful_token', response.data.token)
+        localStorage.setItem('placeful_joined', response.data.joined_date)
         // - redirect the route to /home
         browserHistory.push('/app')
       })
@@ -22,6 +23,22 @@ export function loginUser ({email, password}) {
         // if request is bad, show an error to user
         dispatch(authError('Bad Login info'))
       })
+  }
+}
+
+export function sendPayment (token) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/payment`, token)
+      .then(response => {
+        dispatch({type: SUBSCRIBER_USER})
+        dispatch({
+          type: FETCH_MERCHANT_INFO,
+          payload: response.data
+        })
+        localStorage.setItem('placeful_subscriber', true)
+        browserHistory.push('/app')
+      })
+      .catch(response => console.log(response.data))
   }
 }
 

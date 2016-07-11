@@ -7,18 +7,30 @@ import { createStore, applyMiddleware } from 'redux'
 import { Router, browserHistory } from 'react-router'
 import routes from './routes'
 import reduxThunk from 'redux-thunk'
-import { AUTH_USER } from './actions/types'
+import { AUTH_USER, TRIAL_EXPIRED } from './actions/types'
 import createLogger from 'redux-logger'
+import Moment from 'moment'
 
 import reducers from './reducers'
 
 const logger = createLogger()
 const createStoreWithMiddleware = applyMiddleware(reduxThunk, logger)(createStore)
 const store = createStoreWithMiddleware(reducers)
-const token = localStorage.getItem('placeful_token') // if we have token, user is signed in
+const token = localStorage.getItem('placeful_token')
+const joined_date = localStorage.getItem('placeful_joined')
+const placeful_subscriber = localStorage.getItem('placeful_subscriber')
 
-if (token) {
-  // we need to update application state
+if (token && joined_date) {
+  let todayDate = new Moment().format('M/D/YYYY')
+  todayDate = new Moment(todayDate, 'M/D/YYYY')
+  let joinedDate = new Moment(joined_date, 'M/D/YYYY')
+  let diffDays = todayDate.diff(joinedDate, 'days')
+  if (diffDays > 14 && !placeful_subscriber) {
+    // we need to update application state
+    store.dispatch({type: TRIAL_EXPIRED})
+    store.dispatch({type: AUTH_USER})
+    browserHistory.push('/app/payment')
+  }
   store.dispatch({type: AUTH_USER})
 } else {
   let paths = ['/app/forgotpass', '/app/setpass', '/app/signup']

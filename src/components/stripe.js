@@ -1,17 +1,35 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 
 class PaymentView extends Component {
+  static propTypes = {
+    sendPayment: PropTypes.func,
+    merchant: PropTypes.array
+}
+
+  constructor (props) {
+    super(props)
+    this.onToken = this.onToken.bind(this);
+    this.state = { buttonVal: 'Make payment', disabled: ''}
+  }
+
   onToken (token) {
-    console.log(token)
+    this.setState({ buttonVal: 'Processing payment', disabled: 'disabled'})
+    this.props.sendPayment(token)
   }
 
   render () {
+    if (!this.props.merchant) {
+      return <div>
+               Loading
+             </div>
+    }
     return (
     <div className='container-fluid'>
       <section className='box-typical box-typical-full-height'>
         <div className='box-typical-center'>
           <div className='box-typical-center-in prices-page'>
+          <p>Your 14 days free trial has ended. Make payment below to continue</p>
             <header className='prices-page-title'>
               Affordable price. No contract.
             </header>
@@ -30,16 +48,15 @@ class PaymentView extends Component {
                 <StripeCheckout
                   token={this.onToken}
                   stripeKey='pk_test_38o72mxE5rPuPUpZTDJVmKKv'
-                  name='Three Comma Co.'
-                  description='Big Data Stuff'
-                  image='https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png'
+                  name={this.props.merchant[0].business_name}
+                  image='https://dl.dropbox.com/s/dk44jwvhaoxkxl2/Icon-76%402x.png?dl=0'
                   componentclassName='div'
-                  panelLabel='Give Money'
-                  amount={1000000}
+                  panelLabel='Subscribe'
+                  amount={1499}
                   currency='USD'
-                  email='demo@placeful.co'>
-                  <button className='btn btn-rounded'>
-                    Start your trial
+                  email={this.props.merchant[0].business_email}>
+                  <button className='btn btn-rounded' disabled={this.state.disabled}>
+                    {this.state.buttonVal}
                   </button>
                 </StripeCheckout>
               </div>
