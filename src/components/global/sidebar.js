@@ -24,12 +24,12 @@ const Sidebar = (props) => {
       <ul className='side-menu-list'>
         <li className='green'>
           <Link to='/app/promo/new'>
-          <i className='fa fa-edit'></i> <span className='lbl'>Create a new Special</span>
+          <i className='fa fa-edit'></i> <span className='lbl'>Create a new Promotion</span>
           </Link>
         </li>
         <li className='magenta'>
           <Link to='/app/promotions'>
-          <i className='fa fa-table'></i> <span className='lbl'>Specials</span>
+          <i className='fa fa-table'></i> <span className='lbl'>Promotions</span>
           </Link>
         </li>
         <li className='purple'>
@@ -45,7 +45,7 @@ const Sidebar = (props) => {
         </li>
         <li className='brown'>
           <Link to='/app/quick_promo'>
-          <i className='fa fa-edit'></i> <span className='lbl'>Last Minute Special</span>
+          <i className='fa fa-edit'></i> <span className='lbl'>Last Minute Promotion</span>
           </Link>
         </li>
         <li>

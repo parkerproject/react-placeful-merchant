@@ -18,7 +18,7 @@ class Promos extends Component {
     return (
     <div className='box'>
       <div className='box-header'>
-        <Link to='/app/promo/new' className='btn btn-success'> Add new Special
+        <Link to='/app/promo/new' className='btn btn-success'> Add new Promo
         </Link>
       </div>
       <div className='box-body overview'>

@@ -99,7 +99,7 @@ class PostNewPromo extends Component {
 
     return (
     <div className='box-typical box-typical-padding'>
-      <h4 className='m-t-lg with-border'>New Special</h4>
+      <h4 className='m-t-lg with-border'>New Promotion</h4>
       <div className='box-body overview'>
         <div className='row'>
           <div className='col-md-8'>
@@ -109,7 +109,7 @@ class PostNewPromo extends Component {
                   Title (50-character limit)
                 </label>
                 <p>
-                  <span>Think of this as the tagline, the first thing locals will see when browsing through your specials e.g. Manic Monday Happy Hour - 2 for 1 drinks, Wine and Dine Under the Stars - drink + food specials all night in our outdoor patio!</span>
+                  <span>Think of this as the tagline, the first thing locals will see when browsing through your promos e.g. Manic Monday Happy Hour - 2 for 1 drinks, Wine and Dine Under the Stars - drink + food promos all night in our outdoor patio!</span>
                 </p>
                 <input
                   type='text'
@@ -126,7 +126,7 @@ class PostNewPromo extends Component {
                   Description
                 </label>
                 <p>
-                  <span>Briefly, describe the special. We also encourage you to use this space to write a sentence or two about your place: What's your vibe? What are you known for? Why do your customers love you?</span>
+                  <span>Briefly, describe the promo. We also encourage you to use this space to write a sentence or two about your place: What's your vibe? What are you known for? Why do your customers love you?</span>
                 </p>
                 <textarea className='form-control' {...description} placeholder='description' />
               </div>
@@ -135,16 +135,16 @@ class PostNewPromo extends Component {
                   The Fine Print
                 </label>
                 <p>
-                  <span>Conditions that apply to this special, e.g, only redeemable on weeknights</span>
+                  <span>Conditions that apply to this promo, e.g, only redeemable on weeknights</span>
                 </p>
                 <textarea className='form-control' {...fine_print} placeholder='fine print' />
               </div>
               <div className='form-group'>
                 <label className='font-weight-bold'>
-                  Select which days of the week you want special to run
+                  Select which days of the week you want promo to run
                 </label>
                 <p>
-                  <span>Note that your special will only run on selected days</span>
+                  <span>Note that your promo will only run on selected days</span>
                 </p>
                 <Select2
                   multiple
@@ -158,7 +158,7 @@ class PostNewPromo extends Component {
               </div>
               <div className='form-group' style={innerStyles.styles}>
                 <label className='font-weight-bold'>
-                  Select the time range you want special to run
+                  Select the time range you want promo to run
                 </label>
                 <p>
                   <span>Click the icons to pick the time</span>
@@ -243,10 +243,10 @@ class PostNewPromo extends Component {
               </div>
               <div className='form-group'>
                 <label className='font-weight-bold'>
-                  Select category for special
+                  Select category for promo
                 </label>
                 <p>
-                  <span>Choose the right category for your special</span>
+                  <span>Choose the right category for your promo</span>
                 </p>
                 <Select2
                   multiple
@@ -260,10 +260,10 @@ class PostNewPromo extends Component {
               </div>
               <div className='form-group'>
                 <label className='font-weight-bold'>
-                  Select the neighborhood for this special
+                  Select the neighborhood for this promo
                 </label>
                 <p>
-                  <span>What part of the city is this special taking place.</span>
+                  <span>What part of the city is this promo taking place.</span>
                 </p>
                 <DropdownList
                   {...locality}
@@ -276,10 +276,10 @@ class PostNewPromo extends Component {
               </div>
               <div className='form-group'>
                 <label className='font-weight-bold'>
-                  Add image for special
+                  Add image for promo
                 </label>
                 <p>
-                  <span>Specials with sharp and clear images tend to have more views. Make sure that image is at least 800px wide. <br /><span className='text-danger'>We do not accept images with text in the background</span></span>
+                  <span>promos with sharp and clear images tend to have more views. Make sure that image is at least 800px wide. <br /><span className='text-danger'>We do not accept images with text in the background</span></span>
                 </p>
                 <div className='row'>
                   <div className='col-md-6'>
