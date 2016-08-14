@@ -24,35 +24,35 @@ class PostNewPromo extends Component {
     this.state = {tags: ['Food', 'Drinks', 'Events', 'Comedy', 'Culture', 'Party', 'Music', 'Afterwork', 'Trendy', 'Datenight', 'Club', 'Outdoors'],
       days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       categories: ['Happy Hour', 'Lunch', 'Dinner', 'Brunch'],
-      cities: ['All New York',
-        'Astoria',
-        'Brooklyn',
-        'Chelsea',
-        'East Village',
-        'Financial District',
-        'Flatiron',
-        'Gramercy',
-        'Greenwich Village',
-        'Harlem',
-        "Hell's Kitchen",
-        'Kips Bay',
-        'Lower East Side',
-        'Meatpacking District',
-        'Midtown East',
-        'Midtown West',
-        'Murray Hill',
-        'NoHo',
-        'Nolita',
-        'Park Slope',
-        'Queens',
-        'SoHo',
-        'Theater District',
-        'TriBeCa',
-        'Union Square',
-        'Upper East Side',
-        'Upper West Side',
-        'West Village',
-        'Williamsburg'],
+      // cities: ['All New York',
+      //   'Astoria',
+      //   'Brooklyn',
+      //   'Chelsea',
+      //   'East Village',
+      //   'Financial District',
+      //   'Flatiron',
+      //   'Gramercy',
+      //   'Greenwich Village',
+      //   'Harlem',
+      //   "Hell's Kitchen",
+      //   'Kips Bay',
+      //   'Lower East Side',
+      //   'Meatpacking District',
+      //   'Midtown East',
+      //   'Midtown West',
+      //   'Murray Hill',
+      //   'NoHo',
+      //   'Nolita',
+      //   'Park Slope',
+      //   'Queens',
+      //   'SoHo',
+      //   'Theater District',
+      //   'TriBeCa',
+      //   'Union Square',
+      //   'Upper East Side',
+      //   'Upper West Side',
+      //   'West Village',
+      //   'Williamsburg'],
 
       value0: null, value1: null, file: '', preview: 'hide', timevalue0: null, timevalue1: null
 
@@ -89,7 +89,7 @@ class PostNewPromo extends Component {
   }
 
   render () {
-    const {handleSubmit, fields: {title, description, fine_print, start_date, end_date, days, tags, category, locality, files, start_time, end_time }} = this.props
+    const {handleSubmit, fields: {title, description, fine_print, start_date, end_date, days, tags, category, files, start_time, end_time }} = this.props
     let change = (name, value) => this.setState({
       [`value${name}`]: value
     })
@@ -260,26 +260,10 @@ class PostNewPromo extends Component {
               </div>
               <div className='form-group'>
                 <label className='font-weight-bold'>
-                  Select the neighborhood for this promo
-                </label>
-                <p>
-                  <span>What part of the city is this promo taking place.</span>
-                </p>
-                <DropdownList
-                  {...locality}
-                  data={this.state.cities}
-                  defaultValue={''}
-                  placeholder='select neighborhood' />
-                {locality.touched && locality.error && <div className='text-danger'>
-                                                         {locality.error}
-                                                       </div>}
-              </div>
-              <div className='form-group'>
-                <label className='font-weight-bold'>
                   Add image for promo
                 </label>
                 <p>
-                  <span>promos with sharp and clear images tend to have more views. Make sure that image is at least 800px wide. <br /><span className='text-danger'>We do not accept images with text in the background</span></span>
+                  <span>promos with sharp and clear images tend to have more views. Make sure that image is at least 800px wide. <br /></span>
                 </p>
                 <div className='row'>
                   <div className='col-md-6'>
@@ -338,6 +322,6 @@ function validate (formProps) {
 
 export default reduxForm({
   form: 'NewPromo',
-  fields: ['title', 'description', 'fine_print', 'days', 'start_date', 'end_date', 'tags', 'category', 'locality', 'files', 'start_time', 'end_time'],
+  fields: ['title', 'description', 'fine_print', 'days', 'start_date', 'end_date', 'tags', 'category', 'files', 'start_time', 'end_time'],
   validate: validate
 }, mapStateToProps, actions)(PostNewPromo)

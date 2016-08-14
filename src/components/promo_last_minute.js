@@ -84,7 +84,7 @@ class LastMinutePromo extends Component {
     const {handleSubmit, fields: {title, description, category, files, locality }} = this.props
     return (
     <div className='box-typical box-typical-full-height' style={innerStyle.minHeight}>
-      <h4 className='m-t-lg with-border text-center'>Last Minute Special <br /> <small><mark> Only use this form to create a last minute special during slow and quiet days </mark></small></h4>
+      <h4 className='m-t-lg with-border text-center'>Last Minute Promo <br /> <small><mark> Only use this form to create a last minute promo during slow and quiet days </mark></small></h4>
     <div className='add-customers-screen tbl' style={innerStyle.height}>
         <div className='add-customers-screen-in'>
           <form role='form' onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
@@ -113,7 +113,7 @@ class LastMinutePromo extends Component {
             </div>
             <div className='form-group'>
               <label className='font-weight-bold'>
-                Select category for special
+                Select category for promo
               </label>
               <Select2
                 multiple
@@ -127,7 +127,7 @@ class LastMinutePromo extends Component {
             </div>
             <div className='form-group'>
               <label className='font-weight-bold'>
-                Select the neighborhood for this special
+                Select the neighborhood for this promo
               </label>
               <DropdownList
                 {...locality}
@@ -140,7 +140,7 @@ class LastMinutePromo extends Component {
             </div>
             <div className='form-group'>
               <label className='font-weight-bold'>
-                Add image for special
+                Add image for promo
               </label>
               <p>
                 <span>Make sure that image is at least 800px wide. <br /><span className='text-danger'>We do not accept images with text in the background</span></span>
@@ -162,7 +162,7 @@ class LastMinutePromo extends Component {
             <button className='btn btn-success form-control' type='submit'>
               Submit
             </button>
-            <p className='text-center'><small>Note: <span className='text-danger'>that this special will only run today (between 5pm and 11.55pm)</span></small></p>
+            <p className='text-center'><small>Note: <span className='text-danger'>that this promo will only run today (between 5pm and 11.55pm)</span></small></p>
           </form>
         </div>
       </div>
