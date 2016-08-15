@@ -55,8 +55,8 @@ class PostNewPromo extends Component {
       //   'Williamsburg'],
 
       value0: null, value1: null, file: '', preview: 'hide', timevalue0: null, timevalue1: null
-
     }
+      console.log(this)
   }
 
   handleFormSubmit (formProps) {
@@ -71,6 +71,8 @@ class PostNewPromo extends Component {
       }
     })
     body.append('business_id', this.props.merchant[0].business_id)
+    this.refs.mySubmit.innerText = 'Processing...'
+    this.refs.mySubmit.disabled = true
     this.props.createPromo(body)
   }
 
@@ -279,7 +281,7 @@ class PostNewPromo extends Component {
                   </div>
                 </div>
               </div>
-              <button className='btn btn-success form-control' type='submit'>
+              <button className='btn btn-success form-control' type='submit' ref="mySubmit">
                 Submit
               </button>
             </form>

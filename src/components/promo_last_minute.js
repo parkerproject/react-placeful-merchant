@@ -18,36 +18,7 @@ class LastMinutePromo extends Component {
     this.state = {
       categories: ['Happy Hour', 'Dinner', 'Brunch'],
       file: '',
-      preview: 'hide',
-      cities: ['All New York',
-        'Astoria',
-        'Brooklyn',
-        'Chelsea',
-        'East Village',
-        'Financial District',
-        'Flatiron',
-        'Gramercy',
-        'Greenwich Village',
-        'Harlem',
-        "Hell's Kitchen",
-        'Kips Bay',
-        'Lower East Side',
-        'Meatpacking District',
-        'Midtown East',
-        'Midtown West',
-        'Murray Hill',
-        'NoHo',
-        'Nolita',
-        'Park Slope',
-        'Queens',
-        'SoHo',
-        'Theater District',
-        'TriBeCa',
-        'Union Square',
-        'Upper East Side',
-        'Upper West Side',
-        'West Village',
-        'Williamsburg']
+      preview: 'hide'
     }
   }
 
@@ -81,7 +52,7 @@ class LastMinutePromo extends Component {
   }
 
   render () {
-    const {handleSubmit, fields: {title, description, category, files, locality }} = this.props
+    const {handleSubmit, fields: {title, description, category, files }} = this.props
     return (
     <div className='box-typical box-typical-full-height' style={innerStyle.minHeight}>
       <h4 className='m-t-lg with-border text-center'>Last Minute Promo <br /> <small><mark> Only use this form to create a last minute promo during slow and quiet days </mark></small></h4>
@@ -127,23 +98,10 @@ class LastMinutePromo extends Component {
             </div>
             <div className='form-group'>
               <label className='font-weight-bold'>
-                Select the neighborhood for this promo
-              </label>
-              <DropdownList
-                {...locality}
-                data={this.state.cities}
-                defaultValue={''}
-                placeholder='select neighborhood' />
-              {locality.touched && locality.error && <div className='bg-danger'>
-                                                       {locality.error}
-                                                     </div>}
-            </div>
-            <div className='form-group'>
-              <label className='font-weight-bold'>
                 Add image for promo
               </label>
               <p>
-                <span>Make sure that image is at least 800px wide. <br /><span className='text-danger'>We do not accept images with text in the background</span></span>
+                <span>Make sure that image is at least 800px wide. </span>
               </p>
               <div className='row'>
                 <div className='col-md-6'>
@@ -202,7 +160,6 @@ function validate (formProps) {
   if (formProps['title'] === undefined) errors['title'] = 'Title is required'
   if (formProps['category'] === undefined) errors['category'] = 'Category is required'
   if (formProps['files'] === undefined) errors['files'] = 'Image is required'
-  if (formProps['locality'] === undefined) errors['locality'] = 'Neighborhood is required'
   return errors
 }
 
