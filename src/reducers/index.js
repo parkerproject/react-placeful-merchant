@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
-import promosReducer from './promos_reducer'
-import authReducer from './auth_reducer'
-import merchantReducer from './merchant_reducer'
-import followersPromosReducer from './followers_promos_reducer'
-import subscriberReducer from './subscriber_reducer'
+import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+import promosReducer from './promos_reducer';
+import authReducer from './auth_reducer';
+import merchantReducer from './merchant_reducer';
+import followersPromosReducer from './followers_promos_reducer';
+import subscriberReducer from './subscriber_reducer';
 
 const rootReducer = combineReducers({
   promos: promosReducer,
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   merchant: merchantReducer,
   followers_promos: followersPromosReducer,
-  subscriber: subscriberReducer
-})
+  subscriber: subscriberReducer,
+});
 
-export default rootReducer
+export default rootReducer;

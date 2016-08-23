@@ -133,9 +133,9 @@ export function createPromo(formProps) {
   };
 }
 
-export function pausePromo(deal_id, merchant_id, status) {
+export function pausePromo(dealId, merchantId, status) {
   return function (dispatch) {
-    axios.post(`${ROOT_URL}/promo/status`, {deal_id, merchant_id, status}, {
+    axios.post(`${ROOT_URL}/promo/status`, { dealId, merchantId, status }, {
       headers: { authorization: localStorage.getItem('placeful_token') },
     })
       .then(response => {
@@ -162,9 +162,9 @@ export function editProfile(formProps) {
   };
 }
 
-export function readMessage(message_id) {
+export function readMessage(messageId) {
   return function (dispatch) {
-    axios.post(`${ROOT_URL}/message/read`, { message_id }, {
+    axios.post(`${ROOT_URL}/message/read`, { messageId }, {
       headers: { authorization: localStorage.getItem('placeful_token') },
     }).then(response => {
       dispatch({
@@ -242,5 +242,31 @@ export function setPassword(formProps) {
         });
         browserHistory.push('/app/login');
       });
+  };
+}
+
+export function activateSocial(obj, businessId) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/merchant/social/add`, { obj, businessId }, {
+      headers: { authorization: localStorage.getItem('placeful_token') },
+    }).then(response => {
+      dispatch({
+        type: FETCH_MERCHANT_INFO,
+        payload: response.data,
+      });
+    });
+  };
+}
+
+export function deactivateSocial(socialName, businessId) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/merchant/social/delete`, { socialName, businessId }, {
+      headers: { authorization: localStorage.getItem('placeful_token') },
+    }).then(response => {
+      dispatch({
+        type: FETCH_MERCHANT_INFO,
+        payload: response.data,
+      });
+    });
   };
 }

@@ -9,3 +9,23 @@ ul.rw-list>li.rw-list-option, .rw-selectlist>li.rw-list-option{
 .analytics{
 
 }
+
+.social-fa {
+  padding-right: 3px;
+}
+
+.twitter{
+  color: #1da1f2;
+}
+
+.pinterest{
+  color: #bd081c
+}
+
+.foursquare{
+  color: #f94877;
+}
+
+.tumblr{
+  color: #35465c;
+}

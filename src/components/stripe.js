@@ -39,7 +39,7 @@ class PaymentView extends Component {
               </header>
               <div className='price-card-body'>
                 <div className='price-card-amount'>
-                  $14.99
+                  $25
                 </div>
                 <div className='price-card-amount-lbl'>
                   per month
@@ -52,7 +52,7 @@ class PaymentView extends Component {
                   image='https://dl.dropbox.com/s/dk44jwvhaoxkxl2/Icon-76%402x.png?dl=0'
                   componentclassName='div'
                   panelLabel='Subscribe'
-                  amount={1499}
+                  amount={2500}
                   currency='USD'
                   email={this.props.merchant[0].business_email}>
                   <button className='btn btn-rounded' disabled={this.state.disabled}>
