@@ -330,8 +330,8 @@ class PostNewPromo extends Component {
                     </div>
                   </div>
                 </div>
-                {/* <div className="form-group">
-                  <h7 className="font-weight-bold">Promote to social media</h7>
+                <div className="form-group">
+                  <h7 className="font-weight-bold">Distribute to social media</h7>
                   {this.props.merchant[0].twitter &&
                     <div style={innerStyles.social}>
                       <label className="fa fa-twitter social-fa twitter"></label>
@@ -352,7 +352,7 @@ class PostNewPromo extends Component {
                       <label className="fa fa-tumblr social-fa tumblr"></label>
                       <input type="checkbox" {...socialTumblr} value="yes" />
                     </div>}
-                </div> */}
+                </div>
                 <button className="btn btn-success form-control" type="submit" ref="mySubmit">
                   Submit
                 </button>

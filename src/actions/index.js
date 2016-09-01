@@ -120,7 +120,7 @@ export function editPromo(formProps) {
 
 export function createPromo(formProps) {
   return function (dispatch) {
-    axios.post(`${ROOT_URL}/promo/new`, formProps, {
+    axios.post('http://0.0.0.0:1300/promo/new', formProps, {
       headers: { authorization: localStorage.getItem('placeful_token') },
     })
       .then(response => {

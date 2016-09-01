@@ -30,12 +30,12 @@ const Sidebar = (props) => {
               <i className="fa fa-table"></i> <span className="lbl">Promotions</span>
             </Link>
           </li>
-          {/* <li className="pink-red">
+          <li className="pink-red">
             <Link to="/app/connect_social">
-              <i className="fa fa-share-square-o"></i>
+              <i className="fa fa-link"></i>
               <span className="lbl">Connect your social accounts</span>
             </Link>
-          </li> */}
+          </li>
           <li className="purple">
             <Link to="/app/inbox">
               <span>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-
 class ConnectSocial extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +42,7 @@ class ConnectSocial extends Component {
     const buttonSocialClass = this.props.merchant[0][socialName] ?
     'btn-secondary-outline' : '';
     const buttonSocialStateText = this.props.merchant[0][socialName] ?
-    'Connected' : 'Connect';
+    'Disconnect' : 'Connect';
     const socialHandleConnect = () => {
       if (this.props.merchant[0][socialName]) {
         return this.socialDisconnect(socialName);
@@ -88,12 +87,7 @@ class ConnectSocial extends Component {
                       <i className="fa fa-foursquare"></i> Foursquare
                     </td>
                     <td className="mailbox-date">
-                      <button
-                        className={`btn ${this.socialButton('foursquare').buttonSocialClass}`}
-                        onClick={this.socialButton('foursquare').socialHandleConnect}
-                      >
-                      {this.socialButton('foursquare').buttonSocialStateText}
-                      </button>
+                      <button className="btn" disabled>Coming soon</button>
                     </td>
                   </tr>
                   <tr>
@@ -101,12 +95,7 @@ class ConnectSocial extends Component {
                       <i className="fa fa-pinterest"></i> Pinterest
                     </td>
                     <td className="mailbox-date">
-                      <button
-                        className={`btn ${this.socialButton('pinterest').buttonSocialClass}`}
-                        onClick={this.socialButton('pinterest').socialHandleConnect}
-                      >
-                      {this.socialButton('pinterest').buttonSocialStateText}
-                      </button>
+                      <button className="btn" disabled>Coming soon</button>
                     </td>
                   </tr>
                   <tr>
@@ -114,12 +103,7 @@ class ConnectSocial extends Component {
                       <i className="fa fa-tumblr"></i> Tumblr
                     </td>
                     <td className="mailbox-date">
-                      <button
-                        className={`btn ${this.socialButton('tumblr').buttonSocialClass}`}
-                        onClick={this.socialButton('tumblr').socialHandleConnect}
-                      >
-                      {this.socialButton('tumblr').buttonSocialStateText}
-                      </button>
+                      <button className="btn" disabled>Coming soon</button>
                     </td>
                   </tr>
                   <tr>
