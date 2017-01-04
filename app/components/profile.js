@@ -46,7 +46,7 @@ class Profile extends Component {
     }
     const {
       handleSubmit,
-      fields: { business_name, business_phone, description, files } } = this.props;
+      fields: { businessName, businessPhone, description, files } } = this.props;
     return (
       <div className="box-typical box-typical-padding">
         <div className="box-header with-border">
@@ -55,38 +55,56 @@ class Profile extends Component {
         <div className="box-body">
           <div className="row">
             <div className="col-md-8">
-              <form role="form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+              <form role="form" onSubmit={handleSubmit(this.handleFormSubmit)}>
                 <div className="form-group">
                   <label>
                     Business name
                   </label>
-                  <input type="text" className="form-control" {...business_name} defaultValue={this.props.merchant[0].business_name} />
+                  <input
+                    type="text"
+                    className="form-control" {...businessName}
+                    defaultValue={this.props.merchant[0].business_name}
+                  />
                 </div>
                 <div className="form-group">
                   <label>
                     Business phone
                   </label>
-                  <input type="text" className="form-control" {...business_phone} defaultValue={this.props.merchant[0].business_phone} />
+                  <input
+                    type="text"
+                    className="form-control"
+                    {...businessPhone}
+                    defaultValue={this.props.merchant[0].business_phone}
+                  />
                 </div>
                 <div className="form-group">
                   <label>
                     About you
                   </label>
-                  <textarea type="text" className="form-control" {...description} defaultValue={this.props.merchant[0].description} />
+                  <textarea
+                    type="text"
+                    className="form-control"
+                    {...description}
+                    defaultValue={this.props.merchant[0].description}
+                  />
                 </div>
                 <div className="form-group">
                   <div className="row">
-                     <div className="col-md-4">
-                         <p><img src={this.props.merchant[0].business_icon} alt="" /></p>
-                     </div>
-                     <div className="col-md-4">
-                       <Dropzone {...files} className="photo-upload" onDrop={filesToUpload => this.handleImageChange(filesToUpload)}>
+                    <div className="col-md-4">
+                      <p><img src={this.props.merchant[0].business_icon} alt="" /></p>
+                    </div>
+                    <div className="col-md-4">
+                      <Dropzone
+                        {...files}
+                        className="photo-upload"
+                        onDrop={filesToUpload => this.handleImageChange(filesToUpload)}
+                      >
                          Change photo
-                       </Dropzone>
-                     </div>
-                     <div className="col-md-4">
-                       <img src={this.state.file} alt="" width="200" />
-                     </div>
+                      </Dropzone>
+                    </div>
+                    <div className="col-md-4">
+                      <img src={this.state.file} alt="" width="200" />
+                    </div>
                   </div>
                 </div>
                 <button className="btn btn-success form-control" type="submit">
@@ -115,7 +133,7 @@ function mapStateToProps(state) {
   };
 }
 
-function validate(formProps) {
+function validate() {
   const errors = {};
   return errors;
 }
