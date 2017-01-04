@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Dropzone from 'react-dropzone';
 import Select2 from 'react-select2-wrapper';
 import { reduxForm } from 'redux-form';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 import Moment from 'moment';
 import momentLocalizer from 'react-widgets/lib/localizers/moment';
 import { DateTimePicker } from 'react-widgets';
@@ -196,7 +196,7 @@ class PostNewPromo extends Component {
                       name="startTime"
                       placeholder="start time"
                       calendar={false}
-                      onChange={timechange.bind(null, 0)}
+                      onChange={() => timechange(null, 0)}
                       value={this.state.timevalue0}
                     />
                     {startTime.touched && startTime.error &&
@@ -210,7 +210,7 @@ class PostNewPromo extends Component {
                       value={this.state.timevalue1}
                       placeholder="end time"
                       calendar={false}
-                      onChange={timechange.bind(null, 1)}
+                      onChange={() => timechange(null, 1)}
                     />
                     {endTime.touched && endTime.error &&
                       <div className="text-danger">
@@ -231,7 +231,7 @@ class PostNewPromo extends Component {
                       min={new Date()}
                       name="startDate"
                       time={false}
-                      onChange={change.bind(null, 0)}
+                      onChange={() => change(null, 0)}
                       value={this.state.value0}
                     />
                     {startDate.touched && startDate.error &&
@@ -251,7 +251,7 @@ class PostNewPromo extends Component {
                       min={new Date()}
                       value={this.state.value1}
                       time={false}
-                      onChange={change.bind(null, 1)}
+                      onChange={() => change(null, 1)}
                     />
                     {endDate.touched && endDate.error &&
                       <div className="text-danger">
