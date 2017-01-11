@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const Promos = (props) => (
   <div className="box">
     <div className="box-header">
-      <Link to="/app/promo/new" className="btn btn-success"> Add new Promo
+      <Link to="/promo/new" className="btn btn-success"> Add new Promo
       </Link>
     </div>
     <div className="box-body overview">

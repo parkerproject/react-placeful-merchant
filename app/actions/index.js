@@ -31,7 +31,7 @@ export function loginUser({ email, password }) {
         localStorage.setItem('placeful_token', response.data.token);
         localStorage.setItem('placeful_joined', response.data.joined_date);
         // - redirect the route to /home
-        browserHistory.push('/app');
+        browserHistory.push('/');
       })
       .catch(() => {
         // if request is bad, show an error to user
@@ -50,7 +50,7 @@ export function sendPayment(token) {
           payload: response.data,
         });
         localStorage.setItem('placeful_subscriber', true);
-        browserHistory.push('/app');
+        browserHistory.push('/');
       })
       .catch(response => console.log(response.data));
   };
@@ -61,7 +61,7 @@ export function signupUser(formProps) {
     axios.post(`${ROOT_URL}/register`, { formProps })
       .then(() => {
         dispatch({ type: AUTH_USER });
-        browserHistory.push('/app/thanks');
+        browserHistory.push('/thanks');
       })
       .catch(response => dispatch(authError(response.data.error)));
   };
@@ -71,7 +71,7 @@ export function logoutUser() {
   localStorage.removeItem('placeful_token');
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
-    browserHistory.push('/app/login');
+    browserHistory.push('/login');
   };
 }
 
@@ -113,7 +113,7 @@ export function editPromo(formProps) {
           type: FETCH_PROMOS,
           payload: response.data,
         });
-        browserHistory.push('/app/promotions');
+        browserHistory.push('/promotions');
       });
   };
 }
@@ -128,7 +128,7 @@ export function createPromo(formProps) {
           type: FETCH_PROMOS,
           payload: response.data,
         });
-        browserHistory.push('/app/promotions');
+        browserHistory.push('/promotions');
       });
   };
 }
@@ -143,7 +143,7 @@ export function pausePromo(dealId, merchantId, status) {
           type: FETCH_PROMOS,
           payload: response.data,
         });
-        browserHistory.push('/app/promotions');
+        browserHistory.push('/promotions');
       });
   };
 }
@@ -157,7 +157,7 @@ export function editProfile(formProps) {
         type: FETCH_MERCHANT_INFO,
         payload: response.data,
       });
-      browserHistory.push('/app/promotions');
+      browserHistory.push('/promotions');
     });
   };
 }
@@ -185,7 +185,7 @@ export function promoteToFollowers(formProps) {
           type: FETCH_FOLLOWERS_PROMOS,
           payload: response.data,
         });
-        browserHistory.push('/app/promotions');
+        browserHistory.push('/promotions');
       });
   };
 }
@@ -214,7 +214,7 @@ export function lastMinutePromo(formProps) {
           type: FETCH_PROMOS,
           payload: response.data,
         });
-        browserHistory.push('/app/promotions');
+        browserHistory.push('/promotions');
       });
   };
 }
@@ -227,7 +227,7 @@ export function resetPassword(email) {
           type: FETCH_MERCHANT_INFO,
           payload: response.data,
         });
-        browserHistory.push('/app/login');
+        browserHistory.push('/login');
       });
   };
 }
@@ -240,7 +240,7 @@ export function setPassword(formProps) {
           type: FETCH_MERCHANT_INFO,
           payload: response.data,
         });
-        browserHistory.push('/app/login');
+        browserHistory.push('/login');
       });
   };
 }

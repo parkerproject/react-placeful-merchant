@@ -12,7 +12,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'build'),                // output path
-    filename: 'treck.js',                             // compiled js (single file only)
+    filename: 'bundle.js',                             // compiled js (single file only)
     publicPath: '/',
   },
   resolve: {
@@ -44,7 +44,7 @@ module.exports = {
   },
   postcss: [autoprefixer],
   plugins: [
-    new ExtractTextPlugin('treck.css', { allChunks: true }),  // compiled css (single file only)
+    new ExtractTextPlugin('bundle.css', { allChunks: true }),  // compiled css (single file only)
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({

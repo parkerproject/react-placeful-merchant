@@ -1,93 +1,81 @@
-import React, { Component, PropTypes } from 'react'
-import Tablehead from './tablehead'
-import Moment from 'moment'
-import { Link } from 'react-router'
-import { connect } from 'react-redux'
-import * as actions from '../../actions'
+import React, { Component, PropTypes } from 'react';
+import Tablehead from './tablehead';
+import moment from 'moment';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 class Table extends Component {
-  constructor (props) {
-    super(props)
+
+  pause(dealId, merchantId, status) {
+    this.props.pausePromo(dealId, merchantId, status);
   }
 
-  static propTypes = {
-    data: PropTypes.array,
-    merchant: PropTypes.array,
-    pausePromo: PropTypes.func
-}
-
-  pause (deal_id, merchant_id, status) {
-    this.props.pausePromo(deal_id, merchant_id, status)
-  }
-
-  render () {
+  render() {
     if (!this.props.data) {
-      return <div>
-               Loading...
-             </div>
+      return <div>Loading...</div>;
     }
 
     let promos = this.props.data.map((promo) => {
-      let end_date = Moment(promo.end_date).format('MMMM Do YYYY')
-      let start_date = Moment(promo.start_date).format('MMMM Do YYYY')
-      let approved = promo.approved ? 'label pull-right label-success' : 'label pull-right label-warning'
-      let approvedText = promo.approved ? 'published' : 'pending'
+      let endDate = moment(promo.end_date).format('MMMM Do YYYY');
+      let startDate = moment(promo.start_date).format('MMMM Do YYYY');
+      let approved = promo.approved ? 'label pull-right label-success' :
+      'label pull-right label-warning';
+      let approvedText = promo.approved ? 'published' : 'pending';
 
       return (
-      <tr role='row' className='odd' key={promo._id}>
-        <td className='sorting_1'>
-          {promo.ticket_id}
-        </td>
-        <td>
-          {promo.title}
-        </td>
-        <td>
-          {start_date}
-        </td>
-        <td>
-          {end_date}
-        </td>
-        <td>
-          <a href={`http://placefulapp.com/promotion/${promo.deal_id}/${promo.slug}`} target='_blank'>View</a>
-        </td>
-        <td>
-          <Link to={`/app/promotion/edit/${promo.deal_id}`} title='edit promo'> Edit
-          </Link>
-          <span className={approved}>{approvedText}</span>
-        </td>
-      </tr>
-      )
-    })
+        <tr role="row" className="odd" key={promo.deal_id}>
+          <td className="sorting_1">
+            {promo.ticket_id}
+          </td>
+          <td>
+            {promo.title}
+          </td>
+          <td>
+            {startDate}
+          </td>
+          <td>
+            {endDate}
+          </td>
+          <td>
+            <a href={`http://placefulapp.com/promotion/${promo.deal_id}/${promo.slug}`} target="_blank">View</a>
+          </td>
+          <td>
+            <Link to={`/app/promotion/edit/${promo.deal_id}`} title="edit promo"> Edit
+            </Link>
+            <span className={approved}>{approvedText}</span>
+          </td>
+        </tr>
+      );
+    });
 
     return (
-    <table
-      id='example1'
-      className='table table-bordered table-striped dataTable'
-      role='grid'
-      aria-describedby='example1_info'>
-      <Tablehead />
-      <tbody>
-        {promos}
-      </tbody>
-    </table>
-    )
+      <table
+        id="example1"
+        className="table table-bordered table-striped dataTable"
+        role="grid"
+        aria-describedby="example1_info"
+      >
+        <Tablehead />
+        <tbody>
+          {promos}
+        </tbody>
+      </table>
+    );
   }
 
 }
 
-const innerStyle = {
-  status: {
-    position: 'relative',
-    left: '10px',
-    fontSize: '1.5em',
-    cursor: 'pointer'
-  }
-}
+Table.propTypes = {
+  data: PropTypes.array,
+  merchant: PropTypes.array,
+  pausePromo: PropTypes.func,
+};
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
-    authenticated: state.auth.authenticated
-  }
+    authenticated: state.auth.authenticated,
+  };
 }
 
-export default connect(mapStateToProps, actions)(Table)
+export default connect(mapStateToProps, actions)(Table);

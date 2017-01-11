@@ -99,9 +99,9 @@ class PostNewPromo extends Component {
         files,
         startTime,
         socialTwitter,
-        socialTumblr,
-        socialPinterest,
-        socialFoursquare,
+        // socialTumblr,
+        // socialPinterest,
+        // socialFoursquare,
         endTime },
       } = this.props;
     const change = (name, value) => this.setState({
@@ -337,7 +337,7 @@ class PostNewPromo extends Component {
                       <label className="fa fa-twitter social-fa twitter"></label>
                       <input type="checkbox" {...socialTwitter} value="yes" />
                     </div>}
-                  {this.props.merchant[0].foursquare &&
+                  {/* {this.props.merchant[0].foursquare &&
                     <div style={innerStyles.social}>
                       <label className="fa fa-foursquare social-fa foursquare"></label>
                       <input type="checkbox" {...socialFoursquare} value="yes" />
@@ -351,7 +351,7 @@ class PostNewPromo extends Component {
                     <div style={innerStyles.social}>
                       <label className="fa fa-tumblr social-fa tumblr"></label>
                       <input type="checkbox" {...socialTumblr} value="yes" />
-                    </div>}
+                    </div>} */}
                 </div>
                 <button className="btn btn-success form-control" type="submit" ref="mySubmit">
                   Submit
@@ -384,10 +384,10 @@ function validate(formProps) {
     if (formProps[key] === undefined &&
       key !== 'description' &&
       key !== 'finePrint' &&
-      key !== 'socialTwitter' &&
-      key !== 'socialFoursquare' &&
-      key !== 'socialPinterest' &&
-      key !== 'socialTumblr'
+      key !== 'socialTwitter'
+    //  key !== 'socialFoursquare' &&
+    //  key !== 'socialPinterest' &&
+    //  key !== 'socialTumblr'
       ) {
       errors[key] = 'Field is required';
     }
@@ -409,9 +409,6 @@ export default reduxForm({
     'files',
     'startTime',
     'socialTwitter',
-    'socialFoursquare',
-    'socialPinterest',
-    'socialTumblr',
     'endTime'],
   validate,
 }, mapStateToProps, actions)(PostNewPromo);

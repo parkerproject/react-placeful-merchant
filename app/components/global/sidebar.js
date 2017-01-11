@@ -7,13 +7,13 @@ const Sidebar = (props) => {
       <div>loading...</div>
     );
   }
-  let messageCount = 0;
-  const messages = props.merchant[0].messages.map((message, key) => {
-    if (!message.read) {
-      messageCount++;
-    }
-    return messageCount;
-  });
+  const messageCount = 0;
+  // const messages = props.merchant[0].messages.map((message, key) => {
+  //   if (!message.read) {
+  //     messageCount++;
+  //   }
+  //   return messageCount;
+  // });
   const active = messageCount > 0 ? 'active' : '';
   return (
     <div>
@@ -21,23 +21,23 @@ const Sidebar = (props) => {
       <nav className="side-menu">
         <ul className="side-menu-list">
           <li className="green">
-            <Link to="/app/promo/new">
+            <Link to="/promo/new">
               <i className="fa fa-edit"></i> <span className="lbl">Create a new Promotion</span>
             </Link>
           </li>
           <li className="magenta">
-            <Link to="/app/promotions">
+            <Link to="/promotions">
               <i className="fa fa-table"></i> <span className="lbl">Promotions</span>
             </Link>
           </li>
           <li className="pink-red">
-            <Link to="/app/connect_social">
+            <Link to="/connect_social">
               <i className="fa fa-link"></i>
               <span className="lbl">Connect your social accounts</span>
             </Link>
           </li>
           <li className="purple">
-            <Link to="/app/inbox">
+            <Link to="/inbox">
               <span>
                 <i className={`font-icon font-icon-comments ${active}`}></i>
                 <span className="lbl">Messages</span>
@@ -45,27 +45,31 @@ const Sidebar = (props) => {
             </Link>
           </li>
           <li className="pink-red">
-            <Link to="/app/analytics">
+            <Link to="/analytics">
               <i className="font-icon font-icon-zigzag"></i>
               <span className="lbl">Analytics</span>
             </Link>
           </li>
-          <li className="brown">
-            <Link to="/app/quick_promo">
+          {/* <li className="brown">
+            <Link to="/quick_promo">
               <i className="fa fa-edit"></i>
               <span className="lbl">Last minute promotion</span>
             </Link>
-          </li>
-          <li>
-            <Link to="/app/followers/promote">
+          </li> */}
+          {/* <li>
+            <Link to="/followers/promote">
               <i className="fa fa-users"></i>
               <span className="lbl">Promote to followers</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>
   );
+};
+
+Sidebar.propTypes = {
+  merchant: React.PropTypes.array,
 };
 
 export default Sidebar;

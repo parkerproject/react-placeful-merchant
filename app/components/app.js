@@ -40,7 +40,7 @@ App.propTypes = {
   fetchMerchantInfo: PropTypes.func,
   fetchPromos: PropTypes.func,
   fetchFollowersPromos: PropTypes.func,
-  merchant: PropTypes.object,
+  merchant: PropTypes.array,
   children: PropTypes.any,
 };
 

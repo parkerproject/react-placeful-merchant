@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import reduxThunk from 'redux-thunk';
-import { AUTH_USER, TRIAL_EXPIRED, TWITTER_CONNECTED, TWITTER_UNCONNECTED } from './actions/types';
+import { AUTH_USER, TRIAL_EXPIRED } from './actions/types';
 import createLogger from 'redux-logger';
 import Moment from 'moment';
 
@@ -27,13 +27,13 @@ if (token && localStorage.getItem('placeful_joined')) {
     // we need to update application state
     store.dispatch({ type: TRIAL_EXPIRED });
     store.dispatch({ type: AUTH_USER });
-    browserHistory.push('/app/payment');
+    browserHistory.push('/payment');
   }
   store.dispatch({ type: AUTH_USER });
 } else {
-  const paths = ['/app/forgotpass', '/app/setpass', '/app/signup'];
+  const paths = ['/forgotpass', '/setpass', '/signup'];
   if (paths.indexOf(location.pathname) > -1) {
-    browserHistory.push('/app/login');
+    browserHistory.push('/login');
   }
 }
 
